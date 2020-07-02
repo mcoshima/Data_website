@@ -1,16 +1,16 @@
 enable  : true
 item  :
-  - icon  : tf-ion-ios-copy-outline
-    title : WordPress Theme
+  - icon  : tf-bargraph
+    title : Data
     description : >
-      Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.
-
-  - icon  : tf-ion-ios-alarm-outline
-    title : Responsive Design
+      Collect, check, and tidy data
+      
+  - icon  : tf-ion-ios-analytics-outline
+    title : Analytics
     description : >
-      Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.
-
-  - icon  : tf-ion-ios-book-outline
-    title : Media & Advertisement
+      Use statistical models to understand and predict trends in your data
+      
+  - icon  : tf-desktop
+    title : Dashboards
     description : >
-      Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.
+      Interactive and real-time data visualizations, dashboards, and applications

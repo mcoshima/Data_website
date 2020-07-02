@@ -1,44 +1,45 @@
 enable  : true
-topTitle: EASY PRICING
-title   : Pricing.
-subtitle : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!
+topTitle: Courses for Every Level
+title   : Trainings
+subtitle : Whether you are a beginner looking to learn the basics of programming and statistical analysis or want to advance your skill set, we have the perfect course for you.
 
 item  :
-  - name        : BASIC
-    price       : $99
-    description : Perfect for single freelancers who work by themselves
+  - name        : Introduction to R
+    
+    description : Easy introduction to the R programming language and the IDE RStudio.
     featurelist :
-      - item: 1GB Disk Space
-      - item: 10 Email Account
-      - item: Script Installer
-      - item: 1 GB Storage
-      - item: 10 GB Bandwidth
-      - item: 24/7 Tech Support
+      - item: Beginner Level
+      - item: 3 weeks
+      - item: Online
+      - item: One-on-one support
+      - item: Quizes to reinforce understanding
+      
+    
     btnText     : Sign Up
     btnURL      : https://themefisher.com/
 
-  - name        : ADVANCE
-    price       : $199
-    description : Suitable for small businesses with up to 5 employees
+  - name        : Advanced Programming 
+    
+    description : Improve your skills with more advanced programming and statistical techniques.
     featurelist :
-      - item: 1GB Disk Space
-      - item: 10 Email Account
-      - item: Script Installer
-      - item: 1 GB Storage
-      - item: 10 GB Bandwidth
-      - item: 24/7 Tech Support
+      - item: Intermediate to Advanced Level
+      - item: 4 weeks
+      - item: Online
+      - item: One-on-one support
+      - item: Quizes and projects to reinforce understanding
+      
     btnText     : Sign Up
     btnURL      : https://themefisher.com/
 
-  - name        : PROFESSIONAL
-    price       : $299
-    description : Great for large businesses with more than 5 employees
+  - name        : Reproducible Research
+    
+    description : Learn best practices for developing and maintaining efficient and open workflows.
     featurelist :
-      - item: 1GB Disk Space
-      - item: 10 Email Account
-      - item: Script Installer
-      - item: 1 GB Storage
-      - item: 10 GB Bandwidth
-      - item: 24/7 Tech Support
+      - item: Any level 
+      - item: 5 weeks
+      - item: Online
+      - item: One-on-one support
+      - item: 3 projects to reinforce understanding
+      
     btnText     : Sign Up
     btnURL      : https://themefisher.com/

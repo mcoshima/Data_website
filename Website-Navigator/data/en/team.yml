@@ -1,10 +1,10 @@
 enable  : true
-topTitle: TEAM MEMBER
-title   : Our Team.
-subtitle: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!
+topTitle: Get to know us
+title   : Our Team
+subtitle: We have a diverse skill set and are eager to work with you!
 
 member  :
-  - image         : images/team/member-1.jpg
+  - image         : images/team/member-5.jpg
     name          : Shawshank Redemption
     designation   : Head Of Marketing
     description   : >
@@ -14,7 +14,7 @@ member  :
     gplusURL      : https://plus.google.com/
     dribbbleURL   : https://dribbble.com/
 
-  - image         : images/team/member-2.jpg
+  - image         : images/team/member-5.jpg
     name          : Leo Departure
     designation   : Web Developer
     description   : >
@@ -24,7 +24,7 @@ member  :
     gplusURL      : https://plus.google.com/
     dribbbleURL   : https://dribbble.com/
 
-  - image         : images/team/member-3.jpg
+  - image         : images/team/member-5.jpg
     name          : Remoni Rio
     designation   : Senior Developer
     description   : >
@@ -34,12 +34,4 @@ member  :
     gplusURL      : https://plus.google.com/
     dribbbleURL   : https://dribbble.com/
 
-  - image         : images/team/member-4.jpg
-    name          : Lawandeski Roma
-    designation   : Designer
-    description   : >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur necessitatibus ullam, culpa odio.
-    facebookURL   : https://www.facebook.com/
-    twitterURL    : https://twitter.com/
-    gplusURL      : https://plus.google.com/
-    dribbbleURL   : https://dribbble.com/
+

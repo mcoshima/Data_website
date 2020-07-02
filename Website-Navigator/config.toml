@@ -19,7 +19,7 @@ DefaultContentLanguage = "en"
 
 # Site Params
 [params]
-logo = "images/logo.png"
+logo = "images/ds_logo.png"
 
 
 # meta data
@@ -41,40 +41,37 @@ footerSubscribeTitle = "Subscribe"
 # Hero Area Section
 [params.hero]
 enable  = true
-heading = "We love to make brands grow"
-description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quo dolor est incidunt suscipit minima, alias numquam voluptatum rerum porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore at laboriosam unde repellat id expedita quae quisquam libero officia consequatur."
+heading = "Providing data-driven solutions for modern problems"
+description = ""
 button  = true
-btnText = "Know More"
+btnText = "Learn More"
 btnURL  = "https://themefisher.com/"
-videoThumb = "images/slider/video-player-thumb.jpg"
+videoThumb = "images/slider/woman_working.jpg"
 videoURL   = "https://www.youtube.com/embed/g3-VxLQO7do"
 
 # About 2 Section
 [params.aboutSm]
 enable  = true
-title   = "We use data-driven research to give businesses the insight to reach their full potential."
+title   = "We use data-driven research to help businesses reach their full potential."
 description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae deleniti ipsa labore necessitatibus culpa veritatis quo accusantium, neque enim ea ad eaque iure, quas tempore velit, quibusdam dolor illo! Explicabo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quisquam maiores iste soluta, nihil dolorem?"
 
 # Blog Section On Homepage
 [params.blog]
 enable  = true
-topTitle= "OUR UNTOLD STORY"
-title   = "Blog."
-subtitle= "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!"
+topTitle= ""
+title   = "Recent Posts"
+subtitle= ""
 
 # Contact Section
 [params.contact]
 enable  = true
 topTitle= "DROP US A NOTE"
 title   = "Contact Us."
-subtitle= "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!"
-address = "14/05, Stockhome <br> Victori Palace , United States"
+subtitle= "If you are interested in a training course or our consulting services, send us a request. We look forward to working with you!"
+address = "151 Linda Cir <br> Ocean Springs, MS"
 phone   = "(03) 9283 2617"
-fax     = "+61 3827 3590"
-facebook= "https://www.facebook.com/"
 twitter = "https://twitter.com/"
 linkedin= "https://www.linkedin.com/"
-dribbble= "https://dribbble.com/"
 instagram= "https://www.instagram.com/"
 mapLatitude = "51.507351"
 mapLongitude= "-0.127758"
@@ -84,8 +81,8 @@ mapMarker   = "images/marker.png"
 [params.cta]
 enable  = true
 bg      = "images/call-to-action/call-to-action-bg-2.jpg"
-title   = "Let's Create Something Together"
-subtitle= "Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin bibendum auctor, <br> nisi elit consequat ipsum, nesagittis sem nid elit. Duis sed odio sitain elit."
+title   = "Let's Work Together"
+subtitle= "For all of your data science and analytics needs, we are here to help."
 btnText = "Contact Us"
 
 # We Used Themefisher Icon font for Icon, for more details check this github repository - https://github.com/themefisher/themefisher-font

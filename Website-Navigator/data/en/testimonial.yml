@@ -2,24 +2,24 @@ enable : true
 item    :
   - quote       : >
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corpori labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?
-    clientThumb : images/client-logo/clients-1.jpg
-    clientName  : Matt Cutts
+    clientThumb : images/client-logo/jamespotter.jpg
+    clientName  : James Potter
     clientDesignation: CEO , Company Name
 
   - quote       : >
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corpori labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?
-    clientThumb : images/client-logo/clients-2.jpg
-    clientName  : Elon Mask
+    clientThumb : images/client-logo/lilypotter.jpg
+    clientName  : Lily Potter
     clientDesignation: CEO , Company Name
 
   - quote       : >
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corpori labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?
-    clientThumb : images/client-logo/clients-1.jpg
-    clientName  : Matt Cutts
+    clientThumb : images/client-logo/lupin.jpg
+    clientName  : Remus Lupin
     clientDesignation: CEO , Company Name
 
   - quote       : >
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corpori labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?
-    clientThumb : images/client-logo/clients-2.jpg
-    clientName  : Elon Mask
+    clientThumb : images/client-logo/Sirius_Black_Profile.JPG.jpg
+    clientName  : Sirius Black
     clientDesignation: CEO , Company Name

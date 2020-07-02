@@ -1,28 +1,28 @@
 enable    : true
-topTitle  : A LIST OF SERVICES
-title     : Our Service.
+topTitle  : SERVICES WE PROVIDE
+title     : What service fits your needs?
 subtitle  : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!
 item      :
-  - icon  : tf-ion-ios-copy-outline
-    title : Branding
+  - icon  : tf-toolbox
+    title : Training
     list  :
-      - name : Brand Strategy
-      - name : Advertising / Campaigns
-      - name : Product Design
-      - name : Video / Photography
+      - name : Programming Courses
+      - name : Individual or group trainings
+      - name : In-person and online
+      - name : Specialized workshops
 
-  - icon  : tf-ion-ios-alarm-outline
-    title : Branding
+  - icon  : tf-ion-ios-speedometer-outline
+    title : Data Dashboards and Web App Development 
     list  :
-      - name : Web Design
-      - name : E- Commerce Site Design
-      - name : App Development
-      - name : Mobile UI Design
+      - name : Data visualization
+      - name : Interactive dashboards
+      - name : Interactive web app
+      
 
-  - icon  : tf-ion-ios-book-outline
-    title : IOS App Development
+  - icon  : tf-presentation
+    title : Data Analytics Consulting
     list  :
-      - name : Game Development
-      - name : Game Design
-      - name : Social Media Marketing
-      - name : Mobile UI Design
+      - name : Develop technological infrastructure 
+      - name : Create analytical tools
+      - name : Utilize statistical models to inform decision-making
+      

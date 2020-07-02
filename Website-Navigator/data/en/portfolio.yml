@@ -1,42 +1,42 @@
 enable  : true
 topTitle: RECENT WORK
-title   : WORK SHOWCASE.
-subtitle: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!
+title   : COMPLETED PROJECTS
+subtitle: Projects we have recently completed with other companies.
 
 filtermenu :
-  - name      : Photography
-    category  : photography
+  - name      : R
+    category  : r
 
-  - name      : Ios App
-    category  : ios
+  - name      : Shiny Apps
+    category  : shiny
 
-  - name      : Development
-    category  : development
+  - name      : Dashboards
+    category  : dashboards
 
-  - name      : Design
-    category  : design
+  - name      : Web Design
+    category  : web
 
 item   :
-  - title : AirBnB Postcard
+  - title : COVID-19 Dashboard
     image : images/portfolio/portfolio-1.jpg
-    category  : photography
+    category  : dashboards, shiny, r 
 
-  - title : D Design
+  - title : Trophic Networks
     image : images/portfolio/portfolio-2.jpg
-    category  : ios, design
+    category  : r, shiny
 
-  - title : Xbox 360
+  - title : Blogdown Website
     image : images/portfolio/portfolio-3.jpg
-    category  : photography, development
+    category  : r, web
 
-  - title : Ballon Card
+  - title : YouTube Tutorials
     image : images/portfolio/portfolio-4.jpg
-    category  : ios
+    category  : r
 
-  - title : Ready Toons
+  - title : MSE Analysis
     image : images/portfolio/portfolio-5.jpg
-    category  : design
+    category  : r
 
-  - title : Illustration
+  - title : Package Development
     image : images/portfolio/portfolio-6.jpg
-    category  : development
+    category  : r
