@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us"><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="This is meta description">
+ <meta name="author" content="Meg Oshima">
+<meta name="generator" content="Hugo 0.73.0" />
+
+<title>Create Customized Shiny Dashboards: Without Knowing CSS!</title>
+
+<!-- Mobile Specific Meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+<!-- Stylesheets -->
+<!-- Themefisher Icon font -->
+<link rel="stylesheet" href="/plugins/themefisher-font/style.css">
+<!-- bootstrap.min css -->
+<link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.min.css">
+<!-- Lightbox.min css -->
+<link rel="stylesheet" href="/plugins/lightbox2/dist/css/lightbox.min.css">
+<!-- Slick Carousel -->
+<link rel="stylesheet" href="/plugins/slick-carousel/slick/slick.css">
+<link rel="stylesheet" href="/plugins/slick-carousel/slick/slick-theme.css">
+<!-- Main Stylesheet -->
+
+
+<link rel="stylesheet" href="/css/style.min.css" media="screen">
+
+</head>
+<body id="body">
+        <!-- Start Preloader -->
+<div id="preloader">
+    <div class="preloader">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
+    </div>
+</div>
+<!-- End Preloader --><!-- Fixed Navigation -->
+
+<section class="header navigation">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-md">
+                    <a class="navbar-brand" href="/">
+                        <img src="/images/ds_logo.png" alt="Data Solutions | Dedicated to helping businesses making data-driven decisions">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="tf-ion-android-menu"></span>
+                    </button>
+                    
+                    <div id="drapeaux">
+                        
+                        
+                    </div>
+                    <div class="collapse navbar-collapse" id="navigation">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                    href="/">Home</a>
+                            </li>
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About</a>
+                            </li>
+                            
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/service">Service</a>
+                            </li>
+                            
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/portfolio">Portfolio</a>
+                            </li>
+                            
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section><div id="content">
+
+<section class="blog-single section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <img src="/images/blog/dashboard.jpg" class="w-100 mb-3" alt="Post-Image">
+                <h2>Create Customized Shiny Dashboards: Without Knowing CSS!</h2>
+                <div class="post-meta mb-5">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <span>By</span>
+                            Meg
+                        </li>
+                        <li class="list-inline-item">
+                            <span>at</span>
+                            <span>July 8, 2020</span>
+                        </li>
+                    </ul>
+                </div>
+                
+
+
+<div id="problem" class="section level2">
+<h2>Problem</h2>
+<p>Recently, I was making a Shiny Dashboard that I wanted to look nice but I wasn’t satisfied with any of available themes and designs. The easiest way to customize a dashboard is to change the color of the skin but you are limited to the pre-selected colors (blue, black, purple, green, red, and yellow). Additionally you can use 3rd party packages such as <code>semantic.dashboard</code> or the <code>shinythemes</code> to use a Bootstrap theme. All of these look better than the generic “out-of-the-box” dashboard theme, however, I wanted to use a specific color scheme for my dashboard. At first, it seemed like I would need to write a custom style file (in CSS) or add HTML and CSS code in the app, both of which are difficult for someone who is not very familiar with either language. I also wanted to avoid the second option because (this is purely for aesthetics), I found that the extra text made it more difficult to read through and the script overall looked “messy”.</p>
+</div>
+<div id="solution" class="section level2">
+<h2>Solution</h2>
+<p>After a deep Google search, I came upon a fairly new package <code>dashboardthemes</code>. In this package, there are 7 pre-made dashboard themes you can use, but it also allows you to easily create your own custom theme <em>without</em> writing any CSS or HTML!! This package is exactly what I was looking for.</p>
+<div id="pre-made-themes" class="section level3">
+<h3>Pre-Made themes:</h3>
+<p><img src="/blog/dashboardthemes/pre-made_themes.png" /></p>
+</div>
+</div>
+<div id="my-theme" class="section level2">
+<h2>My Theme</h2>
+The theme I built was based on the <a href="https://www.nordtheme.com/docs/colors-and-palettes">Nord color palette</a><br />
+
+<center>
+<img src="/blog/dashboardthemes/polar_night.png" /><br />
+<img src="/blog/dashboardthemes/snow_storm.png" /><br />
+<img src="/blog/dashboardthemes/frost.png" /><br />
+<img src="/blog/dashboardthemes/aurora.png" />
+</center>
+<p>and is a “dark-mode” version.</p>
+<div id="general" class="section level3">
+<h3>General</h3>
+<p>I created a new script ‘theme_diy.R’ and used the function <code>shinyDashboardThemeDIY()</code> to create the object <code>nord_theme</code>. The first section is the general section which icludes the font family you want to use, the color of your text, the color of the background for the body of the page, and the font colors that will be used for each status (primary, info, success, warning, and danger). Allowing different font colors for different statuses is nice because sometimes certain colors look better with a dark font rather than a light font. To specify the color, I used the hex code but you can also use the <code>rgb()</code> function.</p>
+<pre class="r"><code>theme_nord &lt;- shinyDashboardThemeDIY(
+  
+  ### general
+  appFontFamily = &quot;Arial&quot;
+  ,appFontColor = &quot;#D8DEE9&quot;
+  ,primaryFontColor = &quot;#434C5E&quot;
+  ,infoFontColor = &quot;#434C5E&quot;
+  ,successFontColor = &quot;#434C5E&quot;
+  ,warningFontColor = &quot;#434C5E&quot;
+  ,dangerFontColor = &quot;#434C5E&quot;
+  ,bodyBackColor = &quot;#2E3440&quot;</code></pre>
+</div>
+<div id="header" class="section level3">
+<h3>Header</h3>
+<p>The second section customizes the header part of the dashboard. You can change the color of the bar, the color of buttons and icons, and the color of them when you hover over them. You can also add a shadow boarder around the header to give it a 3d-dimensional look. I chose not too have a shadow to give it a flat look.</p>
+<pre class="r"><code> ### header
+  ,logoBackColor = &quot;#3B4252&quot;
+  
+  ,headerButtonBackColor = &quot;#3B4252&quot;
+  ,headerButtonIconColor = &quot;#4C566A&quot;
+  ,headerButtonBackColorHover = &quot;#3B4252&quot;
+  ,headerButtonIconColorHover = &quot;#81A1C1&quot;
+  
+  ,headerBackColor = &quot;#3B4252&quot;
+  ,headerBoxShadowColor = &quot;&quot;
+  ,headerBoxShadowSize = &quot;0px 0px 0px&quot;</code></pre>
+<p>The next section is for the sidebar. You can add spacing around objects (padding), shadow boxes, and change the color of the menu background, search bar, and tabs. There are a lot of options for tabs, you can change text color and size, the boarder around a tab, the colors for selected tabs or hovering over one (if you don’t want it to be different just set it to the same color as the normal tab color).</p>
+<pre class="r"><code>  ### sidebar
+  ,sidebarBackColor = &quot;#434C5E&quot;
+  ,sidebarPadding = 0
+  
+  ,sidebarMenuBackColor = &quot;transparent&quot;
+  ,sidebarMenuPadding = 0
+  ,sidebarMenuBorderRadius = 0
+  
+  ,sidebarShadowRadius = &quot;&quot;
+  ,sidebarShadowColor = &quot;0px 0px 0px&quot;
+  
+  ,sidebarUserTextColor = &quot;#D8DEE9&quot;
+  
+  ,sidebarSearchBackColor = &quot;#4C566A&quot;
+  ,sidebarSearchIconColor = &quot;#E5E9F0&quot;
+  ,sidebarSearchBorderColor = &quot;#4C566A&quot;
+  
+  ,sidebarTabTextColor = &quot;#ECEFF4&quot;
+  ,sidebarTabTextSize = 14
+  ,sidebarTabBorderStyle = &quot;none&quot;
+  ,sidebarTabBorderColor = &quot;none&quot;
+  ,sidebarTabBorderWidth = 0
+  
+  ,sidebarTabBackColorSelected = &quot;#3B4252&quot;
+  ,sidebarTabTextColorSelected = &quot;#ECEFF4&quot;
+  ,sidebarTabRadiusSelected = &quot;5px&quot;
+  
+  ,sidebarTabBackColorHover = &quot;#3B4252&quot;
+  ,sidebarTabTextColorHover = &quot;#81A1C1&quot;
+  ,sidebarTabBorderStyleHover = &quot;none&quot;
+  ,sidebarTabBorderColorHover = &quot;none&quot;
+  ,sidebarTabBorderWidthHover = 0
+  ,sidebarTabRadiusHover = &quot;5px&quot;</code></pre>
+</div>
+<div id="boxes" class="section level3">
+<h3>Boxes</h3>
+<p>This section sets the colors for various types of boxes you can use in a dashboard. The <code>boxBackColor</code> is for a basic box. Again, I chose not to add a shadow border because I wanted the flat look. I increased the font size so that titles of boxes are 18 pt. You can also set colors for the status options. I chose the following colors:<br />
+<img src="/blog/dashboardthemes/box_colors.png" width="800" height="200" /></p>
+<p>You can also adjust the color of the boxes of a tab, I made mine the same other box backgrounds.</p>
+<pre class="r"><code>### boxes
+  ,boxBackColor = &quot;#434C5E&quot;
+  ,boxBorderRadius = 5
+  ,boxShadowSize = &quot;0px 0px 0px&quot;
+  ,boxShadowColor = &quot;&quot;
+  ,boxTitleSize = 18
+  ,boxDefaultColor = &quot;#434C5E&quot;
+  ,boxPrimaryColor = &quot;#88C0D0&quot;
+  ,boxInfoColor = &quot;#8FBCBB&quot;
+  ,boxSuccessColor = &quot;#A3BE8C&quot;
+  ,boxWarningColor = &quot;#EBCB8B&quot;
+  ,boxDangerColor = &quot;#BF616A&quot;
+  
+  ,tabBoxTabColor = &quot;#434C5E&quot;
+  ,tabBoxTabTextSize = 16
+  ,tabBoxTabTextColor = &quot;#D8DEE9&quot;
+  ,tabBoxTabTextColorSelected = &quot;#D8DEE9&quot;
+  ,tabBoxBackColor = &quot;#434C5E&quot;
+  ,tabBoxHighlightColor = &quot;#4C566A&quot;
+  ,tabBoxBorderRadius = 5</code></pre>
+</div>
+<div id="inputs-and-tables" class="section level3">
+<h3>Inputs and Tables</h3>
+<p>The last two sections are where you customize the buttons, text boxes, and tables. You can change the color of the button when you hover over it, and you can adjust the radius of the border. The text box back color changes text boxes and dropdown menu colors. You can change a table’s background color, border color and border thickness.</p>
+<pre class="r"><code>  ### inputs
+  ,buttonBackColor = &quot;#D8DEE9&quot;
+  ,buttonTextColor = &quot;#2E3440&quot;
+  ,buttonBorderColor = &quot;#2E3440&quot;
+  ,buttonBorderRadius = 5
+  
+  ,buttonBackColorHover = &quot;#E5E9F0&quot;
+  ,buttonTextColorHover = &quot;#3B4252&quot;
+  ,buttonBorderColorHover = &quot;#2E3440&quot;
+  
+  ,textboxBackColor = &quot;#4C566A&quot;
+  ,textboxBorderColor = &quot;#2E3440&quot;
+  ,textboxBorderRadius = 5
+  ,textboxBackColorSelect = &quot;#3B4252&quot;
+  ,textboxBorderColorSelect = &quot;#2E3440&quot;
+  
+  ### tables
+  ,tableBackColor = &quot;#4C566A&quot;
+  ,tableBorderColor = &quot;#2E3440&quot;
+  ,tableBorderTopSize = 1
+  ,tableBorderRowSize = 1
+  
+)</code></pre>
+<p>After you have finished setting everything up, you will call your custom theme in the app.R file. At the top of the file, I read in the theme with <code>source("theme_diy.R")</code>. Then in the UI body call that theme.</p>
+<pre class="r"><code>ui &lt;- dashboardPage(
+  dashboardHeader(),
+  dashboardBody(
+    theme_nord,
+    
+    ### the rest of body elements
+  )
+)</code></pre>
+</div>
+<div id="custom-logo" class="section level3">
+<h3>Custom Logo</h3>
+<p>The theme does not change the logo part of the dashboard. The logo is your dashboard’s name or the section in the top left above the side bar. To change this, use the function <code>shinyDashboardLogoDIY()</code>. I included this in the same script as the theme. You can specify which text is bold and which is not (boldText and mainText), the size of the text, and add a badge if you want. I did not include a badge in mine and I achieved this by setting <code>badgeText=""</code>.</p>
+<pre class="r"><code>logo_nord &lt;- shinyDashboardLogoDIY(
+  boldText = &quot;COVID-19&quot;
+  ,mainText = &quot;in Your State&quot;
+  ,textSize = 18
+  ,badgeText = &quot;&quot;
+  ,badgeTextColor = &quot;&quot;
+  ,badgeTextSize = 0
+  ,badgeBackColor = &quot;#3B4252&quot;
+  ,badgeBorderRadius = 0
+)</code></pre>
+<p>To use your custom logo in your dashboard, source the script at the top of the app.R file, then add it into the UI section.</p>
+<pre class="r"><code> ui &lt;- dashboardPage(
+      
+      ### ui header
+      dashboardHeader(
+    
+        ### changing logo
+        title = logo_nord
+        ...
+      )
+ )</code></pre>
+</div>
+</div>
+<div id="final-theme" class="section level2">
+<h2>Final Theme</h2>
+<p><img src="/blog/2020-07-08-create-customized-shiny-dashboards-without-knowing-css_files/final_theme.PNG" /></p>
+<div id="tips" class="section level3">
+<h3>Tips</h3>
+<p>Some tips I found useful were to:<br />
+- Look at the script of one of their themes and try to match the colors to what items it corresponded to if it was unclear what the argument changed<br />
+- Save the changes as I went and reload my shiny app each time<br />
+- Follow the guidelines for using the Nord palette to inform which colors I used for each item<br />
+<br><br />
+Overall, I am extremely satisfied with the theme I made and this package makes it easy to make as many as I desire. Next, I will probably make a “light-mode” Nord theme.</p>
+</div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        </div><!-- Footer Start -->
+<footer id="footer" class="bg-one">
+    <div class="top-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <h3>About</h3>
+                    <p>Integer posuere erat a ante venenati dapibus posuere velit aliquet. Fusce dapibus, tellus cursus commodo, tortor mauris sed posuere.</p>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <h3>Service</h3>
+                    <ul>
+                        
+                        <li>
+                            <a href="/service">Trainings</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/service">Dashboards</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/service">Shiny Apps</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <h3>Quicklinks</h3>
+                    <ul>
+                        
+                        <li>
+                            <a href="/about">Partners</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/about">About</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/about">FAQ&#39;s</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/contact">Work With Us</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <h3>Subscribe</h3>
+                    <form class="subscribe-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <button type="submit" class="btn btn-main-sm">Subscribe Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <h5>Copyright 2018. All rights reserved.</h5>
+        <h6>Design and Developed by themefisher.com
+            <br>Get More
+            <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Free Bootstrap Templates</a>
+        </h6>
+    </div>
+</footer>
+<!-- end footer -->
+
+
+<!-- Essential Scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/plugins/bootstrap/dist/js/popper.min.js"></script>
+<script src="/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Parallax -->
+<script src="/plugins/parallax/jquery.parallax-1.1.3.js"></script>
+<!-- lightbox -->
+<script src="/plugins/lightbox2/dist/js/lightbox.min.js"></script>
+<!-- Slick Carousel -->
+<script src="/plugins/slick-carousel/slick/slick.min.js"></script>
+<!-- Portfolio Filtering -->
+<script src="/plugins/filterzr/jquery.filterizr.min.js"></script>
+<!-- Smooth Scroll js -->
+<script src="/plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+</body>
+</html>

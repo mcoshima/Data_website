@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on Data Solutions | Dedicated to helping businesses making data-driven decisions</title>
+    <title>ENGLISH Blog on Data Solutions | Dedicated to helping businesses making data-driven decisions</title>
     <link>/blog/</link>
-    <description>Recent content in Blog on Data Solutions | Dedicated to helping businesses making data-driven decisions</description>
+    <description>Recent content in ENGLISH Blog on Data Solutions | Dedicated to helping businesses making data-driven decisions</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 07 Jul 2018 18:23:33 +0600</lastBuildDate>
@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>test</title>
-      <link>/blog/test/</link>
+      <title>Create Customized Shiny Dashboards: Without Knowing CSS!</title>
+      <link>/blog/create-customized-shiny-dashboards-without-knowing-css-md/</link>
       <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>/blog/test/</guid>
-      <description>This post is a test. I hope everything doesn&#39;t break again!</description>
+      <guid>/blog/create-customized-shiny-dashboards-without-knowing-css-md/</guid>
+      <description>Problem Recently, I was making a Shiny Dashboard that I wanted to look nice but I wasn&amp;rsquo;t satisfied with any of available themes and designs.</description>
     </item>
     
     <item>
@@ -99,15 +99,6 @@
       
       <guid>/blog/ten-things-about-business/</guid>
       <description>Introduction Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/blog/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/blog/2015-07-23-r-rmarkdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents.</description>
     </item>
     
   </channel>
