@@ -121,7 +121,7 @@ name    = "dashboard"
 url     = "service"
 weight  = 2
 [[menu.service]]
-name    = "shinyapp"
+name    = "shiny"
 url     = "service"
 weight  = 3
 
@@ -139,6 +139,6 @@ name    = "faqs"
 url     = "about"
 weight  = 3
 [[menu.quicklink]]
-name    = "contact"
+name    = "work"
 url     = "contact"
 weight  = 4

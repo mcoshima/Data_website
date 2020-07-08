@@ -13,12 +13,12 @@ other = "Contact"
 other = "Trainings"
 [dashboard]
 other = "Dashboards"
-[shinyapp]
+[shiny]
 other = "Shiny Apps"
 
 [partners]
 other = "Partners"
 [faqs]
 other = "FAQ's"
-[contact]
+[work]
 other = "Work With Us"
