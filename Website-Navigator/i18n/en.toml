@@ -9,16 +9,16 @@ other = "Blog"
 [contact]
 other = "Contact"
 
-[graphicdesign]
-other = "Graphic Design"
-[webdesign]
-other = "Web Design"
-[webdevelopment]
-other = "Web Development"
+[training]
+other = "Trainings"
+[dashboard]
+other = "Dashboards"
+[shiny]
+other = "Shiny Apps"
 
 [partners]
 other = "Partners"
 [faqs]
 other = "FAQ's"
-[badges]
-other = "Badges"
+[work]
+other = "Work With Us"

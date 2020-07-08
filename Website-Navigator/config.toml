@@ -113,15 +113,15 @@ weight  = 6
 
 # Footer Service Menu
 [[menu.service]]
-name    = "graphicdesign"
+name    = "training"
 url     = "service"
 weight  = 1
 [[menu.service]]
-name    = "webdesign"
+name    = "dashboard"
 url     = "service"
 weight  = 2
 [[menu.service]]
-name    = "webdevelopment"
+name    = "shiny"
 url     = "service"
 weight  = 3
 
@@ -139,6 +139,6 @@ name    = "faqs"
 url     = "about"
 weight  = 3
 [[menu.quicklink]]
-name    = "badges"
-url     = "about"
+name    = "work"
+url     = "contact"
 weight  = 4
