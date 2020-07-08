@@ -69,12 +69,12 @@ topTitle= "DROP US A NOTE"
 title   = "Contact Us."
 subtitle= "If you are interested in a training course or our consulting services, send us a request. We look forward to working with you!"
 address = "151 Linda Cir <br> Ocean Springs, MS"
-phone   = "(03) 9283 2617"
+phone   = "(843) 902 9841"
 twitter = "https://twitter.com/"
 linkedin= "https://www.linkedin.com/"
 instagram= "https://www.instagram.com/"
-mapLatitude = "51.507351"
-mapLongitude= "-0.127758"
+mapLatitude = "30.412735"
+mapLongitude= " -88.802957"
 mapMarker   = "images/marker.png"
 
 # Call to Action Section on About Page
@@ -113,15 +113,15 @@ weight  = 6
 
 # Footer Service Menu
 [[menu.service]]
-name    = "graphicdesign"
+name    = "training"
 url     = "service"
 weight  = 1
 [[menu.service]]
-name    = "webdesign"
+name    = "dashboard"
 url     = "service"
 weight  = 2
 [[menu.service]]
-name    = "webdevelopment"
+name    = "shinyapp"
 url     = "service"
 weight  = 3
 
@@ -139,6 +139,6 @@ name    = "faqs"
 url     = "about"
 weight  = 3
 [[menu.quicklink]]
-name    = "badges"
-url     = "about"
+name    = "contact"
+url     = "contact"
 weight  = 4

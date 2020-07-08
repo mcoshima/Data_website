@@ -5,7 +5,7 @@ image: images/blog/post-2.jpg
 author: Arya Stark
 description: "This is meta description"
 ---
-### A cleansing hot shower or bath
+### Test Test
 
 I like to start with taking a shower or a bath when getting ready for bed. I’ll always incorporate either Himalayan pink salt or Epsom salt into my routine. Then, I’ll do an in-shower meditation, just releasing my day and allowing it to wash down the drain. I like to start from the neck down to symbolize washing and removing anything, and then I go from the feet up after to symbolize recharging my energy.
 

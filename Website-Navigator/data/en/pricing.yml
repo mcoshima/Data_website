@@ -16,7 +16,7 @@ item  :
       
     
     btnText     : Sign Up
-    btnURL      : https://themefisher.com/
+    btnURL      : /contact
 
   - name        : Advanced Programming 
     
@@ -29,7 +29,7 @@ item  :
       - item: Quizes and projects to reinforce understanding
       
     btnText     : Sign Up
-    btnURL      : https://themefisher.com/
+    btnURL      : /contact
 
   - name        : Reproducible Research
     
@@ -42,4 +42,4 @@ item  :
       - item: 3 projects to reinforce understanding
       
     btnText     : Sign Up
-    btnURL      : https://themefisher.com/
+    btnURL      : /contact
