@@ -25,7 +25,7 @@ item   :
     image : images/portfolio/portfolio-2.jpg
     category  : r, shiny
 
-  - title : Blogdown Website
+  - title : Website Development
     image : images/portfolio/portfolio-3.jpg
     category  : r, web
 

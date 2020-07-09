@@ -19,7 +19,7 @@ DefaultContentLanguage = "en"
 
 # Site Params
 [params]
-logo = "images/ds_logo.png"
+logo = "images/eds_logo.png"
 
 
 # meta data
@@ -32,10 +32,10 @@ dateFormat = "January 2, 2006"
 home = "Home"
 menufixed = false
 
-footerDescription = "Integer posuere erat a ante venenati dapibus posuere velit aliquet. Fusce dapibus, tellus cursus commodo, tortor mauris sed posuere."
+footerDescription = "To empower businesses with the skills and support to embrace the potential of their data."
 footerServiceTitle = "Service"
 footerQuicklinkTitle = "Quicklinks"
-footerAboutTitle = "About"
+footerAboutTitle = "Mission"
 footerSubscribeTitle = "Subscribe"
 
 # Hero Area Section
@@ -53,7 +53,7 @@ videoURL   = "https://www.youtube.com/embed/g3-VxLQO7do"
 [params.aboutSm]
 enable  = true
 title   = "We use data-driven research to help businesses reach their full potential."
-description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae deleniti ipsa labore necessitatibus culpa veritatis quo accusantium, neque enim ea ad eaque iure, quas tempore velit, quibusdam dolor illo! Explicabo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quisquam maiores iste soluta, nihil dolorem?"
+description = "We collaborate with businesses to develop the frameworks and skills necessary to harness the data available to them. Analyzing that data allows a company to better understand market trends and predict client behavior. It can also drive decision making to ensure the business is making profitable choices."
 
 # Blog Section On Homepage
 [params.blog]
