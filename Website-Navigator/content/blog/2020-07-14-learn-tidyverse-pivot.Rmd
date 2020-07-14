@@ -1,0 +1,70 @@
+---
+title: 'Learn Tidyverse: Pivot Functions '
+author: Meg
+date: '2020-07-14'
+image: images/blog/Pivot-Table_web.png
+slug: learn-tidyverse-pivot
+categories:
+  - r
+tags:
+  - R
+---
+
+TL:DR :  
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6xmsJ0y6FaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+We will be using the pivot longer and pivot wider functions to change the shape of our dataframe. It is currently in a wide format, where there are multiple observations for each data point. For each individiual plant observed, sepal length and width and petal length and width and the type of species were all recorded. You may be used to using `melt` and `spread` from the `reshape2` package but those functions are being phased out and `pivot_longer` and `pivot_wider` are replacing them. I'm going to start off by creating a fake dataset to work with that has 3 categories - lake, beach, and park - with counts of the number of visitors to each location since 2011. 
+
+```{r message=FALSE}
+library(tidyverse)
+
+dat. <- data.frame(year = rep(seq(2011, 2020), each = 3), 
+                   location = rep(c("beach", "park", "lake"), 10), 
+                   N = round(runif(30, 10,100))) 
+head(dat.)
+
+```
+
+Currently, the data is in the long format, for each year there are 3 separate rows with counts of the number of visitors to each location. So we are going to first use the `pivot_wider` function to turn it into a wide format. 
+
+```{r}
+dat.wider <- dat. %>% 
+  pivot_wider(names_from = location, 
+              values_from = N)
+
+dat.wider
+```
+
+
+The new dataset looks more like a square because it has more columns and fewer rows than our original dataframe did. Now, each row has 3 observations, the number of visitors to each location.
+
+To turn it back to long format, we will use `pivot_longer` and give the `col` argument the columns we want to combine into one.
+```{r}
+dat.wider %>% 
+  pivot_longer(cols = c("beach", "park", "lake"))
+
+dat.wider %>% 
+  pivot_longer(cols = c("beach", "park", "lake"),
+               names_to = "location",
+               values_to = "N_visitors")
+```
+
+In the first lines of code I only told the function which columns to combine. In the second set of code, I specified what names I wanted those columns to turn into. The `names_to` argument gives the name of column that has the old column names and the `values_to` argument gives the name of the column that will hold the data from the combined columns.  
+
+You may be wondering why long or wide format even matters. One reason is if you use ggplot, plotting is much easier when your data is in long format instead of wide. 
+
+```{r}
+dat. %>% 
+  ggplot(aes(x = year, y = N, color = location)) +
+  geom_line()
+
+dat.wider %>% 
+  ggplot(aes(x = year, y = beach)) +
+  geom_line(color = 1) +
+  geom_line(aes(x = year, y = park), color =2) +
+  geom_line(aes(x = year, y = lake), color = 3)
+```
+
+In the above examples you can see that with only 3 lines of code I create a graph with 3 lines, one for each location, and colored according to location. If I used the wide data set, it takes 5 lines of code and I have to add each location separately. If you are going to do it this way, you might as well use base r plotting. Also, if you want to use more advanced ggplot functions such as `facet_wrap`, having your data in the long format makes it much easier.

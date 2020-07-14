@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us"><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="This is meta description">
+ <meta name="author" content="Meg Oshima">
+<meta name="generator" content="Hugo 0.73.0" />
+
+<title>Using RStudio</title>
+
+<!-- Mobile Specific Meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+<!-- Stylesheets -->
+<!-- Themefisher Icon font -->
+<link rel="stylesheet" href="/plugins/themefisher-font/style.css">
+<!-- bootstrap.min css -->
+<link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.min.css">
+<!-- Lightbox.min css -->
+<link rel="stylesheet" href="/plugins/lightbox2/dist/css/lightbox.min.css">
+<!-- Slick Carousel -->
+<link rel="stylesheet" href="/plugins/slick-carousel/slick/slick.css">
+<link rel="stylesheet" href="/plugins/slick-carousel/slick/slick-theme.css">
+<!-- Main Stylesheet -->
+
+
+<link rel="stylesheet" href="/css/style.min.css" media="screen">
+
+</head>
+<body id="body">
+        <!-- Start Preloader -->
+<div id="preloader">
+    <div class="preloader">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
+    </div>
+</div>
+<!-- End Preloader --><!-- Fixed Navigation -->
+
+<section class="header navigation">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-md">
+                    <a class="navbar-brand" href="/">
+                        <img src="/images/eds_logo.png" alt="Data Solutions | Dedicated to helping businesses making data-driven decisions">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="tf-ion-android-menu"></span>
+                    </button>
+                    
+                    <div id="drapeaux">
+                        
+                        
+                    </div>
+                    <div class="collapse navbar-collapse" id="navigation">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                    href="/">Home</a>
+                            </li>
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About</a>
+                            </li>
+                            
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/service">Service</a>
+                            </li>
+                            
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/portfolio">Portfolio</a>
+                            </li>
+                            
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section><div id="content">
+
+<section class="blog-single section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <img src="/images/blog/RStudio-Logo-Flat.png" class="w-100 mb-3" alt="Post-Image">
+                <h2>Using RStudio</h2>
+                <div class="post-meta mb-5">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <span>By</span>
+                            Meg
+                        </li>
+                        <li class="list-inline-item">
+                            <span>at</span>
+                            <span>July 14, 2020</span>
+                        </li>
+                    </ul>
+                </div>
+                <p>The purpose of this tutorial is to share some &ldquo;hidden&rdquo; tricks in RStudio that can improve coding efficiency and overall user experience.</p>
+<h3 id="customizing-your-console">Customizing your Console</h3>
+<p>You can customize your RStudio setup and layout in the Global Options. You can control everything from the arrangement of your windows, to the font color, to the default working directory and more. Here are just a few examples of settings you can change that may improve the look of your RStudio sessions. Go into Tools -&gt; Global Options and start on the General tab. This is where you can change the default working directory, and control what shows up when you start a new session or saves at the end of a session.<br>
+<img src="/blog/usingRStudio/General-Preferences.png" alt=""></p>
+<p>Under the next tab, Code, we can specify formatting styles we want to use. For example, wrap text helps make code more readable by automatically moving text to the next line when it reaches the edge of the window. This also where you can specify autocompletion functions that make coding faster.</p>
+<p><img src="/blog/usingRStudio/Code-Preferences.png" alt=""></p>
+<p>The next tab, Appearance, is where you can change the color scheme of your script.</p>
+<p><img src="/blog/usingRStudio/Format-Preferences.png" alt=""></p>
+<p>Click through some of the other tabs and familiarize yourself with some of the other things you can customize.</p>
+<h3 id="tools-in-rstudio">Tools in RStudio</h3>
+<p>The history pane shows a searchable list of previously run commands. You can also access them in the console by hitting the <code>Up</code> arrow until you find it. The arrow key is good for code that was recently run, while the history pane is better for code that was run earlier in the session.</p>
+<p><img src="/blog/usingRStudio/History.png" alt=""></p>
+<p>Names of functions, arguments, objects, and files can be autofilled using tab. To autofill a function, begin typing the name (ie fun) and when you see a drop down box of functions hit tab. This is a snippet and it provides the skeleton for commonly used functions. To import a file, the tab button can help find the file. Begin typing the filepath and hit <code>Tab</code> to see a drop down list of files. Scroll through the options using the <code>Up</code> and <code>Down</code> arrows  and hit <code>Enter</code> to select the file or folder you want.</p>
+<p><img src="/blog/usingRStudio/tab-autofill-file-search.png" alt=""></p>
+<p>If you want to rename a variable, you can use Rename in Scope. Just highlight the name you want to change, go to Code -&gt; Rename in Scope and it will highlight all occurrences of that exact name so you can edit them all at once.</p>
+<p><img src="/blog/usingRStudio/Rename-in-Scope.png" alt=""></p>
+<p>Sections of code can be folded, or hid, to make it easier to navigate through the script and focus on one section at a time. Braced code (ie functions or loops), code chunks (RMarkdown style), text sections between headers within RMarkdown documents, and code sections are foldable. Sections can be defined in three ways:</p>
+<pre><code># Style one ---------------------------
+
+# Style two ===========================
+
+### Style three #######################
+</code></pre>
+<p>You can use the Jump To menu at the bottom of the editor window or the outline view at top of the editor window. This shows the section names and you can quickly go to any one you choose.</p>
+<p><img src="/blog/usingRStudio/Jumpto-box.png" alt=""></p>
+<h3 id="keyboard-shortcuts">Keyboard Shortcuts</h3>
+<p><code>Alt</code> + <code>-</code> Assignment arrow<br>
+<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>M</code> Highlights all occurrences of a word<br>
+<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>Arrow</code> Creates a second cursor that you can move to lines above or below original 
+<code>Ctrl</code> + <code>Shift</code> + <code>R</code>  Inserts new section<br>
+<code>Ctrl</code> + <code>Shift</code> + <code>m</code> Pipping symbol<br>
+<code>Ctrl</code> + <code>Shift</code> + <code>F</code> search for text in all files in a specified folder<br>
+<code>Ctrl</code> + <code>Shift</code> + <code>A</code> Reformats highlighted section to improve readability<br>
+<code>Ctrl</code> + <code>.</code> Go to file<br>
+<code>Ctrl</code> + <code>Shift</code> + <code>C</code> Comments or uncomments a line
+<code>Alt</code> + <code>Shift</code> + <code>Down Arrow</code> Copies entire line or mulitple lines (highlighted) below</p>
+<p>For Macs, replace <code>Ctrl</code> with <code>Cmd</code></p>
+<h3 id="organizing-your-script">Organizing Your Script</h3>
+<p>It is important to keep your scripts organized and annotated to help you and others remember and understand what lines of code are doing. Well organized scripts save time by making it easy to find what you need and prevent you from having to things repeatedly. Here are a few guidelines for writing nice script.</p>
+<ul>
+<li>
+<p>Use comments to explain what you are doing in a line or section.</p>
+</li>
+<li>
+<p>Use sections for chunks of code. They can be run as a group, are searchable in the outline view, and can be hidden when not needed to make scrolling through the script eaiser.</p>
+</li>
+<li>
+<p>Use descriptive names when naming scripts, nothing generic or vague like code_01.R. This makes it much easier to go back and find later.</p>
+</li>
+<li>
+<p>Put functions into individual scripts so you can easily source them later.</p>
+</li>
+<li>
+<p>Keep everything organized and together by projects.</p>
+</li>
+</ul>
+<h3 id="how-to-use-rprojects">How to Use .RProjects</h3>
+<p>RProjects are a tool to organize your work and make it completely self-contained and transportable. This is ideal for when you are collaborating with others and working on code together. When a project is created, a file is created that holds the files associated with that project, including temporary files and the environment. When you open a project, the working directory is set to the project directory, the .RHistory file is loaded, previously loaded scripts are in the editor window, and the global environment is loaded. One way to open a new project is to open RStudio and click the create new project button.</p>
+<p><img src="/blog/usingRStudio/New-Project.png" alt=""></p>
+<p>You can work with multiple projects at a time in different windows. Another way to create a project is with the package ProjectTemplate. It creates a project directory with pre-defined subfolders to help organize your materials.</p>
+<h4 id="advantages-of-using-projecttemplate-package">Advantages of using ProjectTemplate package</h4>
+<p>When you load a project, it searches through the data directory for files and automatically loads any .csv or .sql files it finds.
+There is a libraries function that will automatically load the necessary libraries when you load the project. First you need to make sure in the <code>config/global.dcf</code> file the <code>load_libraries: TRUE</code>. Then check the <code>libraries</code> it will print out a list of the ones that will be loaded.</p>
+<pre><code>install.packages(&quot;ProjectTemplate&quot;)
+library(ProjectTemplate)
+create.project(&quot;SWT_RStudio&quot;)
+setwd(&quot;./SWT_RStudio&quot;) #current working directory /SWT_RStudio
+load.project()
+</code></pre>
+<p>For this example we will be using the mtcars dataset.</p>
+<pre><code>data(&quot;mtcars&quot;)
+save(mtcars, file = &quot;./data/mtcars.csv&quot;)
+</code></pre>
+<p>We saved the dataframe in the data folder. Now when we load the project, it will automatically be read into our environment. Now any scripts that we write with code associated with this project can be saved in the src folder.  You can also load libraries automatically when the project opens. First, open the <code>config/global.dcf</code> document in a texteditor and set <code>load_libraries</code> to <code>TRUE</code>. If there are specific libraries you need for your analysis, you can add them to the next section, libraries.<br>
+Let&rsquo;s try creating a new dataframe of any three variables you want.</p>
+<pre><code>mtcars_sub &lt;- mtcars[,c(1,2,4)]
+save(mtcars_sub, file = &quot;./data/mtcars_sub.csv&quot;)
+</code></pre>
+<p>These tricks are small things that can make your coding life easier and more efficient. Projects are really great for work that you are sharing or collaborating on, big projects that involve multiple scripts and files, and a good way to practice organization.</p>
+<p><em>This workshop was taught as part of the 2018 Student Workshop Training Series at USM GCRL.</em></p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        </div><!-- Footer Start -->
+<footer id="footer" class="bg-one">
+    <div class="top-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <h3>Mission</h3>
+                    <p>To empower businesses with the skills and support to embrace the potential of their data.</p>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <h3>Service</h3>
+                    <ul>
+                        
+                        <li>
+                            <a href="/service">Trainings</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/service">Dashboards</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/service">Shiny Apps</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <h3>Quicklinks</h3>
+                    <ul>
+                        
+                        <li>
+                            <a href="/about">Partners</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/about">About</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/about">FAQ&#39;s</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/contact">Work With Us</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <h3>Subscribe</h3>
+                    <form class="subscribe-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <button type="submit" class="btn btn-main-sm">Subscribe Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <h5>Copyright 2018. All rights reserved.</h5>
+        <h6>Design and Developed by themefisher.com
+            <br>Get More
+            <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Free Bootstrap Templates</a>
+        </h6>
+    </div>
+</footer>
+<!-- end footer -->
+
+
+<!-- Essential Scripts -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/plugins/bootstrap/dist/js/popper.min.js"></script>
+<script src="/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Parallax -->
+<script src="/plugins/parallax/jquery.parallax-1.1.3.js"></script>
+<!-- lightbox -->
+<script src="/plugins/lightbox2/dist/js/lightbox.min.js"></script>
+<!-- Slick Carousel -->
+<script src="/plugins/slick-carousel/slick/slick.min.js"></script>
+<!-- Portfolio Filtering -->
+<script src="/plugins/filterzr/jquery.filterizr.min.js"></script>
+<!-- Smooth Scroll js -->
+<script src="/plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+</body>
+</html>

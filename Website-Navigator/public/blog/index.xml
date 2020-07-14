@@ -12,6 +12,25 @@
     
     
     <item>
+      <title>Learn Tidyverse: Pivot Functions </title>
+      <link>/blog/learn-tidyverse-pivot/</link>
+      <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/learn-tidyverse-pivot/</guid>
+      <description>TL:DR :
+We will be using the pivot longer and pivot wider functions to change the shape of our dataframe.</description>
+    </item>
+    
+    <item>
+      <title>Using RStudio</title>
+      <link>/blog/using-rstudio/</link>
+      <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/using-rstudio/</guid>
+      <description>The purpose of this tutorial is to share some &amp;ldquo;hidden&amp;rdquo; tricks in RStudio that can improve coding efficiency and overall user experience.</description>
+    </item>
+    
+    <item>
       <title>Create Customized Shiny Dashboards: Without Knowing CSS!</title>
       <link>/blog/create-customized-shiny-dashboards-without-knowing-css-md/</link>
       <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
@@ -26,7 +45,7 @@
       <pubDate>Sun, 08 Jul 2018 12:22:40 +0600</pubDate>
       
       <guid>/blog/blog-photos-on-phone/</guid>
-      <description>Viral dreamcatcher keytar typewriter, aesthetic offal umami. Wellness spaces that reach neglected communities of color are essential, says spiritual advisor, mojo health advocate, and writer Anna Smith.</description>
+      <description>Viral dreamcatcher keytar typewriter, aesthetic offal umami. This is a test.</description>
     </item>
     
     <item>
