@@ -68,3 +68,5 @@ dat.wider %>%
 ```
 
 In the above examples you can see that with only 3 lines of code I create a graph with 3 lines, one for each location, and colored according to location. If I used the wide data set, it takes 5 lines of code and I have to add each location separately. If you are going to do it this way, you might as well use base r plotting. Also, if you want to use more advanced ggplot functions such as `facet_wrap`, having your data in the long format makes it much easier.
+
+For more tutorials and tips like this, subscribe to our newsletter below!

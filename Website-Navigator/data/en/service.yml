@@ -1,7 +1,7 @@
 enable    : true
 topTitle  : SERVICES WE PROVIDE
 title     : What service fits your needs?
-subtitle  : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!
+subtitle  : Choose from one-on-one training, personalized dashboard development, consulting and more. 
 item      :
   - icon  : tf-toolbox
     title : Training

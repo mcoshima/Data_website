@@ -45,7 +45,7 @@ heading = "Providing data-driven solutions for modern problems"
 description = ""
 button  = true
 btnText = "Learn More"
-btnURL  = "https://themefisher.com/"
+btnURL  = "./service"
 videoThumb = "images/slider/woman_working.jpg"
 videoURL   = "https://www.youtube.com/embed/g3-VxLQO7do"
 
@@ -68,10 +68,10 @@ enable  = true
 topTitle= "DROP US A NOTE"
 title   = "Contact Us."
 subtitle= "If you are interested in a training course or our consulting services, send us a request. We look forward to working with you!"
-address = "151 Linda Cir <br> Ocean Springs, MS"
+address = "Ocean Springs, MS"
 phone   = "(843) 902 9841"
 twitter = "https://twitter.com/"
-linkedin= "https://www.linkedin.com/"
+youtube= "https://www.youtube.com/channel/UC-1ICtrxPozDV8KMKHOQ13w?view_as=subscriber"
 instagram= "https://www.instagram.com/"
 mapLatitude = "30.412735"
 mapLongitude= " -88.802957"
@@ -127,18 +127,14 @@ weight  = 3
 
 # Footer Quick links Menu
 [[menu.quicklink]]
-name    = "partners"
+name    = "about"
 url     = "about"
 weight  = 1
 [[menu.quicklink]]
-name    = "about"
+name    = "faqs"
 url     = "about"
 weight  = 2
 [[menu.quicklink]]
-name    = "faqs"
-url     = "about"
-weight  = 3
-[[menu.quicklink]]
 name    = "work"
 url     = "contact"
-weight  = 4
+weight  = 3

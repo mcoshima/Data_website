@@ -1,7 +1,7 @@
 enable  : true
 item    :
   - positionRight : false
-    image : images/about/about1.jpg
+    image : images/about/team.jpg
     title : Resources to elevate your team
     description : >
       We provide training and consulting to help businesses build their team's data science skills and create robust, analytical tools. We are here to help you implement changes in your business that promote a data-driven culture, giving your company the competitive advantage over others. 

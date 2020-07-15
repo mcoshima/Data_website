@@ -5,21 +5,21 @@ subtitle  :
 tabItem   :
   - id        : philosophy
     title     : Our Philosophy
-    heading   : We Create Designs and technology
+    heading   : We Believe In
     content   : >
-      We believe in inclusivity and collaboration. We  
+      At Erudite Data Solutions, we believe in fostering a creative and inclusive community of goal-oriented team members. We prioritize communciation and collaboration to meet and exceed the expectations of our clients. We believe that working with us should be a collaborative partnership and our goal is to give you the skills and tools to make better decisions. We believe that everyone should have ability to analyze their data to maximize their business's performance and surpass their competition.
     image     : images/company/teamwork.jpg
 
   - id        : mission
     title     : Mission
     heading   : Our Mission
     content   : >
-      Our mission is to empower organizations with the 
-    image     : images/company/BI.png
+      Erudite Data Solutions is a team of creative, innovative, and value-driven data scientists who help people develop the skills necessary to cultivate a data-oriented culture within their company. We help businesses that want to better understand their customer, market, and overall performance, and empower them to make data-driven decisions. 
+    image     : images/company/woman_working.jpg
 
   - id        : vision
     title     : Vision
     heading   : Our Vision
     content   : >
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat voluptate molestias, quaerat quo natus dolor harum voluptatibus modi dicta ducimus. <br> <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum quae officia earum dolore est quaerat cupiditate voluptatibus id, magni alias veniam voluptate, libero explicabo, distinctio atque!
-    image     : images/company/company3.jpg
+      Erudite Data Solutions will empower businesses with the tools to harness the power of data to elevate their impact.
+    image     : images/company/vision.jpg
