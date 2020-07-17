@@ -19,7 +19,7 @@ DefaultContentLanguage = "en"
 
 # Site Params
 [params]
-logo = "images/eds_logo.png"
+logo = "images/erudite_logo.png"
 
 
 # meta data
