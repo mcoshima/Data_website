@@ -1,4 +1,4 @@
-baseURL = "https://lucid-kepler-1da0a9.netlify.app/"
+baseURL = "https://eruditedatasolutions.netlify.app/"
 languageCode = "en-us"
 title = "Data Solutions | Dedicated to helping businesses making data-driven decisions"
 theme = "navigator-hugo"
