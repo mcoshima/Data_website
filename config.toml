@@ -1,4 +1,4 @@
-baseURL = "https://eruditedatasolutions.netlify.app/"
+baseURL = "https://eruditedatasolutions.com/"
 languageCode = "en-us"
 title = "Data Solutions | Dedicated to helping businesses making data-driven decisions"
 theme = "navigator-hugo"
