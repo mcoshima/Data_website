@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Another COVID-19 Dashboard</title>
+      <link>/blog/another-covid-19-dashboard/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/another-covid-19-dashboard/</guid>
+      <description>Recently there have been an overwhelming number of dashboards created to display COVID-19 data, so I decided to try my hand at it as well.</description>
+    </item>
+    
+    <item>
       <title>Learn Tidyverse: Pivot Functions </title>
       <link>/blog/learn-tidyverse-pivot/</link>
       <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>

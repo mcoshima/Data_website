@@ -6,10 +6,19 @@
     <description>Recent content in -R -Shiny on Data Solutions | Dedicated to helping businesses making data-driven decisions</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r-shiny/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Another COVID-19 Dashboard</title>
+      <link>/blog/another-covid-19-dashboard/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/another-covid-19-dashboard/</guid>
+      <description>Recently there have been an overwhelming number of dashboards created to display COVID-19 data, so I decided to try my hand at it as well.</description>
+    </item>
     
     <item>
       <title>Create Customized Shiny Dashboards: Without Knowing CSS!</title>
