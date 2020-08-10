@@ -138,3 +138,7 @@ weight  = 2
 name    = "work"
 url     = "contact"
 weight  = 3
+[[menu.quicklink]]
+name    = "rbloggers"
+url     = "https://www.r-bloggers.com/"
+weight  = 4
