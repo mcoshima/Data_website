@@ -1,0 +1,119 @@
+---
+title: Introduction to ggplot2
+author: Meg
+date: '2020-08-18'
+image: images/blog/ggplot_hex.png
+slug: introduction-to-ggplot2
+categories:
+  - r
+tags:
+  - R
+---
+
+#### TL:DR:  
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Y7nvsFQpEuY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+If you are new to ggplot, welcome! If you are used to base R, its probably going to take awhile for you to get the hang of the syntax, but trust me, it's worth it. GGplot is the tidyverse package for making graphics and you can control and customize pretty much every aspect. So let's get started. 
+
+We are going to be working with the mtcars dataset, an oldie but a goodie. So we'll take a look at the structure of the dataframe to see what we are working with. 
+
+```{r message=FALSE}
+library(ggplot2)
+library(dplyr)
+
+head(mtcars)
+str(mtcars)
+```
+
+#### The Basics  
+To create any figure with ggplot you need to start off with the ggplot function. In this function, you include the dataset and the aesthetics section. The aesthetics is where you specify which columns you want as the x and y variables. After that, you need to add the type of plot you want to you create. For example, if I want to create a graph using points, I will add geom_point. All of the types of plots you can create follow this same syntax. Geom_whatever type of graph you want to make. If you want a line chart its geom_line, box and whisker plot is geom_boxplot.. etc etc.
+
+#### Scatter plot  
+
+Let’s start off with a simple example, making a scatterplot.  I am going to use the weight as the x -variable and drat as the y-variable. This is what a standard ggplot will look like. 
+```{r}
+ggplot(data = mtcars, aes(x = wt, y = drat)) + 
+  geom_point()
+```
+
+#### Color by group  
+
+Now, we are going to begin to customize it. Let’s start by color coding the points. We want to be able to quickly identify which points are from cars with 6 cylinders and which are from cars with 4 cylinders. We are first going to set the cylinder column as a factor using the mutate function. We are then going to create a plot like we did before, with the weight as the x-variable and drat as the y-variable but we are going to add this third argument, color. We are setting the color to be equal to the cylinder level. One of the benefits of using ggplot is that it ties seamlessly in with the rest of the tidyverse functions. This makes it really easy to manipulate your data and get it set up in the format you need then send it straight into a plot and it knows to use the manipulated data.  
+
+```{r}
+mtcars %>% 
+  mutate(cyl = as.factor(cyl)) %>% 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) + 
+  geom_point()
+```
+
+As you can probably tell, the style is very different from base r plots. GGplot plots are very customizable and there are many pre-made themes that you can use to change to style of the plot. You can also create your own custom theme and specify anything from the line size, font style and size of the labels, the gridlines, etc. I prefer to use the classic theme most of the time, it is most simplistic and minimal. All of the themes are called `theme_name()`.  
+
+##### Classic  
+```{r}
+mtcars %>% 
+  mutate(cyl = as.factor(cyl)) %>% 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) + 
+  geom_point() +
+  theme_classic()
+```
+
+##### Black and white  
+```{r}
+mtcars %>% 
+  mutate(cyl = as.factor(cyl)) %>% 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) + 
+  geom_point() + 
+  theme_bw()
+```
+
+##### Dark  
+```{r}
+mtcars %>% 
+  mutate(cyl = as.factor(cyl)) %>% 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) + 
+  geom_point() + 
+  theme_dark()
+```
+
+#### Multiple Datasets
+Now I’ll show you how to create a plot with two different datasets. I’m going to first subset the rows of data for cars with 6 cylinders and name that cars.sub.  
+
+```{r}
+cars.sub <- mtcars %>% 
+  filter(cyl == 6)
+```
+
+Then I’m going to make a scatterplot of weight and drat for all cars using `geom_point()`. Then I want to add a line for the data from our cars.sub dataframe. So I’ll add a new `geom_line()` function with the same x and y names but the data argument is going to be the name of the new dataframe. I also want to change the color of the line, so outside of the aesthetics function, I’ll add color = “orange”. 
+
+```{r}
+mtcars %>% 
+  ggplot(aes(x = wt, y = drat)) +
+  geom_point() +
+  geom_line(aes(x = wt, y = drat), data = cars.sub, color = "orange")
+```
+
+Now we have a scatter plot and a line graph with data from 2 different datasets. If you wanted to use data from the same dataframe for the line part, you wouldn’t need to specify the data argument. Also, notice that the axis names default to the column names of the data you’re plotting. You can easily change these by using the labs function and just specify which axis (x or y) and the name. 
+
+```{r}
+mtcars %>% 
+  ggplot(aes(x = wt, y = drat)) +
+  geom_point() +
+  geom_line(aes(x = wt, y = drat), data = cars.sub, color = "orange") +
+  labs(x = "Weight", title = "2 Datasets Plot")
+```
+
+#### Facets
+Lastly, I’m going to show you how to create side-by-side plots by groups in your data. I want to look at the number of cars that get the same mpg but I want to break them out by how many cylinders the car has. So I want the mpg on the x-axis and I’m going to use `geom_histogram()` because a histogram plots the number of times each event (which in this case is the mpg) occurs in the data. Then I am going to add a `facet_wrap()` and use the "~" symbol and the column I want it to group the data by. 
+
+```{r}
+mtcars %>% 
+  ggplot(aes(x = mpg)) +
+  geom_histogram() +
+  facet_wrap(~cyl, scales = "free")
+```
+
+And now we have 3 different plots, with the number of cylinders at the top. You can see that the ranges of mpg is pretty different between the three groups. Adding scales = “free” argument into the facet_wrap function puts each plot on its own x or y scale. 
+
+This is just the beginning of what you can do with ggplot and I'll be posting more tutorials where I go more in-depth on some features soon!
