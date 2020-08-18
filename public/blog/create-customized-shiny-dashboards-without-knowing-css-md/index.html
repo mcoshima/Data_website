@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="description" content="This is meta description">
  <meta name="author" content="Meg Oshima">
-<meta name="generator" content="Hugo 0.73.0" />
+<meta name="generator" content="Hugo 0.62.1" />
 
 <title>Create Customized Shiny Dashboards: Without Knowing CSS!</title>
 
@@ -132,7 +132,7 @@
                     </ul>
                 </div>
                 <h2 id="problem">Problem</h2>
-<p>Recently, I was making a Shiny Dashboard that I wanted to look nice but I wasn&rsquo;t satisfied with any of available themes and designs. The easiest way to customize a dashboard is to change the color of the skin but you are limited to the pre-selected colors (blue, black, purple, green, red, and yellow). Additionally you can use 3rd party packages such as <code>semantic.dashboard</code> or the <code>shinythemes</code> to use a Bootstrap theme. All of these look better than the generic &ldquo;out-of-the-box&rdquo; dashboard theme, however, I wanted to use a specific color scheme for my dashboard. At first, it seemed like I would need to write a custom style file (in CSS) or add HTML and CSS code in the app, both of which are difficult for someone who is not very familiar with either language. I also wanted to avoid the second option because (this is purely for aesthetics), I found that the extra text made it more difficult to read through and the script overall looked &ldquo;messy&rdquo;.</p>
+<p>Recently, I was making a Shiny Dashboard that I wanted to look nice but I wasn't satisfied with any of available themes and designs. The easiest way to customize a dashboard is to change the color of the skin but you are limited to the pre-selected colors (blue, black, purple, green, red, and yellow). Additionally you can use 3rd party packages such as <code>semantic.dashboard</code> or the <code>shinythemes</code> to use a Bootstrap theme. All of these look better than the generic &ldquo;out-of-the-box&rdquo; dashboard theme, however, I wanted to use a specific color scheme for my dashboard. At first, it seemed like I would need to write a custom style file (in CSS) or add HTML and CSS code in the app, both of which are difficult for someone who is not very familiar with either language. I also wanted to avoid the second option because (this is purely for aesthetics), I found that the extra text made it more difficult to read through and the script overall looked &ldquo;messy&rdquo;.</p>
 <h2 id="solution">Solution</h2>
 <p>After a deep Google search, I came upon a fairly new package <code>dashboardthemes</code>. In this package, there are 7 pre-made dashboard themes you can use, but it also allows you to easily create your own custom theme <em>without</em> writing any CSS or HTML!! This package is exactly what I was looking for.</p>
 <h3 id="pre-made-themes">Pre-Made themes:</h3>
@@ -168,7 +168,7 @@
 ,headerBoxShadowColor = &quot;&quot;
 ,headerBoxShadowSize = &quot;0px 0px 0px&quot;
 </code></pre>
-<p>The next section is for the sidebar. You can add spacing around objects (padding), shadow boxes, and change the color of the menu background, search bar, and tabs. There are a lot of options for tabs, you can change text color and size, the boarder around a tab, the colors for selected tabs or hovering over one (if you don&rsquo;t want it to be different just set it to the same color as the normal tab color).</p>
+<p>The next section is for the sidebar. You can add spacing around objects (padding), shadow boxes, and change the color of the menu background, search bar, and tabs. There are a lot of options for tabs, you can change text color and size, the boarder around a tab, the colors for selected tabs or hovering over one (if you don't want it to be different just set it to the same color as the normal tab color).</p>
 <pre><code>### sidebar
   ,sidebarBackColor = &quot;#434C5E&quot;
   ,sidebarPadding = 0
@@ -229,7 +229,7 @@
   ,tabBoxBorderRadius = 5 
 </code></pre>
 <h3 id="inputs-and-tables">Inputs and Tables</h3>
-<p>The last two sections are where you customize the buttons, text boxes, and tables. You can change the color of the button when you hover over it, and you can adjust the radius of the border. The text box back color changes text boxes and dropdown menu colors. You can change a table&rsquo;s background color, border color and border thickness.</p>
+<p>The last two sections are where you customize the buttons, text boxes, and tables. You can change the color of the button when you hover over it, and you can adjust the radius of the border. The text box back color changes text boxes and dropdown menu colors. You can change a table's background color, border color and border thickness.</p>
 <pre><code>  ### inputs
   ,buttonBackColor = &quot;#D8DEE9&quot;
   ,buttonTextColor = &quot;#2E3440&quot;
@@ -265,7 +265,7 @@
 )
 </code></pre>
 <h3 id="custom-logo">Custom Logo</h3>
-<p>The theme does not change the logo part of the dashboard. The logo is your dashboard&rsquo;s name or the section in the top left above the side bar. To change this, use the function <code>shinyDashboardLogoDIY()</code>. I included this in the same script as the theme. You can specify which text is bold and which is not (boldText and mainText), the size of the text, and add a badge if you want. I did not include a badge in mine and I achieved this by setting <code>badgeText=&quot;&quot;</code>.</p>
+<p>The theme does not change the logo part of the dashboard. The logo is your dashboard's name or the section in the top left above the side bar. To change this, use the function <code>shinyDashboardLogoDIY()</code>. I included this in the same script as the theme. You can specify which text is bold and which is not (boldText and mainText), the size of the text, and add a badge if you want. I did not include a badge in mine and I achieved this by setting <code>badgeText=&quot;&quot;</code>.</p>
 <pre><code>logo_nord &lt;- shinyDashboardLogoDIY(
   boldText = &quot;COVID-19&quot;
   ,mainText = &quot;in Your State&quot;
@@ -344,6 +344,10 @@
                         
                         <li>
                             <a href="/contact">Work With Us</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://www.r-bloggers.com/">R-Bloggers</a>
                         </li>
                         
                     </ul>

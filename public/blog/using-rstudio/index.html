@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="description" content="This is meta description">
  <meta name="author" content="Meg Oshima">
-<meta name="generator" content="Hugo 0.73.0" />
+<meta name="generator" content="Hugo 0.62.1" />
 
 <title>Using RStudio</title>
 
@@ -159,7 +159,7 @@
 <h3 id="keyboard-shortcuts">Keyboard Shortcuts</h3>
 <p><code>Alt</code> + <code>-</code> Assignment arrow<br>
 <code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>M</code> Highlights all occurrences of a word<br>
-<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>Arrow</code> Creates a second cursor that you can move to lines above or below original 
+<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>Arrow</code> Creates a second cursor that you can move to lines above or below original
 <code>Ctrl</code> + <code>Shift</code> + <code>R</code>  Inserts new section<br>
 <code>Ctrl</code> + <code>Shift</code> + <code>m</code> Pipping symbol<br>
 <code>Ctrl</code> + <code>Shift</code> + <code>F</code> search for text in all files in a specified folder<br>
@@ -205,7 +205,7 @@ load.project()
 save(mtcars, file = &quot;./data/mtcars.csv&quot;)
 </code></pre>
 <p>We saved the dataframe in the data folder. Now when we load the project, it will automatically be read into our environment. Now any scripts that we write with code associated with this project can be saved in the src folder.  You can also load libraries automatically when the project opens. First, open the <code>config/global.dcf</code> document in a texteditor and set <code>load_libraries</code> to <code>TRUE</code>. If there are specific libraries you need for your analysis, you can add them to the next section, libraries.<br>
-Let&rsquo;s try creating a new dataframe of any three variables you want.</p>
+Let's try creating a new dataframe of any three variables you want.</p>
 <pre><code>mtcars_sub &lt;- mtcars[,c(1,2,4)]
 save(mtcars_sub, file = &quot;./data/mtcars_sub.csv&quot;)
 </code></pre>
@@ -259,6 +259,10 @@ save(mtcars_sub, file = &quot;./data/mtcars_sub.csv&quot;)
                         
                         <li>
                             <a href="/contact">Work With Us</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://www.r-bloggers.com/">R-Bloggers</a>
                         </li>
                         
                     </ul>

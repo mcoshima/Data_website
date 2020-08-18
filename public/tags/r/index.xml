@@ -6,10 +6,19 @@
     <description>Recent content in R on Data Solutions | Dedicated to helping businesses making data-driven decisions</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introduction to ggplot2</title>
+      <link>/blog/introduction-to-ggplot2/</link>
+      <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/introduction-to-ggplot2/</guid>
+      <description>TL:DR:  If you are new to ggplot, welcome! If you are used to base R, its probably going to take awhile for you to get the hang of the syntax, but trust me, it’s worth it.</description>
+    </item>
     
     <item>
       <title>Another COVID-19 Dashboard</title>
@@ -27,7 +36,7 @@
       
       <guid>/blog/learn-tidyverse-pivot/</guid>
       <description>TL:DR :
-We will be using the pivot longer and pivot wider functions to change the shape of our dataframe.</description>
+ We will be using the pivot longer and pivot wider functions to change the shape of our dataframe.</description>
     </item>
     
   </channel>
