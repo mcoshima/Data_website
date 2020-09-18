@@ -1,52 +1,348 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on Data Solutions | Dedicated to helping businesses making data-driven decisions</title>
-    <link>/tags/r/</link>
-    <description>Recent content in R on Data Solutions | Dedicated to helping businesses making data-driven decisions</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 17 Sep 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>How and When to Use For Loops</title>
-      <link>/blog/how-and-when-to-use-for-loops/</link>
-      <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/how-and-when-to-use-for-loops/</guid>
-      <description>What is a for loop? A for loop is a process that lets you automate a portion of your code by repeating a sequence of instructions a specified number of times.</description>
-    </item>
-    
-    <item>
-      <title>Introduction to ggplot2</title>
-      <link>/blog/introduction-to-ggplot2/</link>
-      <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/introduction-to-ggplot2/</guid>
-      <description>TL:DR:If you are new to ggplot, welcome! If you are used to base R, its probably going to take awhile for you to get the hang of the syntax, but trust me, it’s worth it.</description>
-    </item>
-    
-    <item>
-      <title>Another COVID-19 Dashboard</title>
-      <link>/blog/another-covid-19-dashboard/</link>
-      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/another-covid-19-dashboard/</guid>
-      <description>Recently there have been an overwhelming number of dashboards created to display COVID-19 data, so I decided to try my hand at it as well.</description>
-    </item>
-    
-    <item>
-      <title>Learn Tidyverse: Pivot Functions </title>
-      <link>/blog/learn-tidyverse-pivot/</link>
-      <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/learn-tidyverse-pivot/</guid>
-      <description>TL:DR :
-We will be using the pivot longer and pivot wider functions to change the shape of our dataframe.</description>
-    </item>
-    
-  </channel>
-</rss>
+  <title>R on Data Solutions | Dedicated to helping businesses making data-driven decisions</title>
+  <link>/tags/r/</link>
+  <description>Recent content in R on Data Solutions | Dedicated to helping businesses making data-driven decisions</description>
+  <generator>Hugo -- gohugo.io</generator>
+<language>en-us</language>
+<lastBuildDate>Thu, 17 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+<item>
+  <title>How and When to Use For Loops</title>
+  <link>/blog/how-and-when-to-use-for-loops/</link>
+  <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
+  
+<guid>/blog/how-and-when-to-use-for-loops/</guid>
+  <description>&lt;h2 id=&#34;what-is-a-for-loop&#34;&gt;What is a for loop?&lt;/h2&gt;
+&lt;p&gt;A for loop is a process that lets you automate a portion of your code by repeating a sequence of instructions a specified number of times. There are a couple of different types of loops (while, for, repeat) and they all have the same structure and purpose.&lt;/p&gt;
+&lt;h2 id=&#34;when-and-how-do-you-use-it&#34;&gt;When and how do you use it?&lt;/h2&gt;
+&lt;p&gt;Are you re-writing the same line of code but changing one thing each time? You should be using a for loop. They are made for repeating the same function or (set of functions) to an entire vector, matrix, or even list. The structure of a for loop is fairly simple, it contains a looping index, an object to loop through, and the actions you want to perform.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for(variable in vector){
+expression
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are 2 ways to write the looping variable, they each have advantages. The first way is to say &lt;code&gt;for (name in vector)&lt;/code&gt;. The second way is to use a number index such as &lt;code&gt;for (i in 1:length(vector))&lt;/code&gt;. The first way is easy to read and simple but it doesn&amp;rsquo;t give you an index value. The second one is more writing and not as easy to read sometimes but it gives us more control and options in the expression portion. The second way is more commonly used, especially when you need to subset or index from another vector.&lt;/p&gt;
+&lt;h4 id=&#34;method-1&#34;&gt;Method 1&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;set.seed(10)
+df &amp;lt;- data.frame(Name = c(&amp;quot;A&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;C&amp;quot;, &amp;quot;D&amp;quot;, &amp;quot;E&amp;quot;, &amp;quot;F&amp;quot;, &amp;quot;G&amp;quot;), 
+             Age = seq(0,6,1),
+             Month = sample(seq(1,12), 7, replace = T),
+             Length.in = round(seq(3,20,length.out = 7),2))
+             
+for(a in df$Length.in){
+print(a)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#Calculating length in inches using name method of writing loop
+lengths.cm &amp;lt;- c()
+for(i in df$Length.in){
+  lengths.cm[i] &amp;lt;- i*2.54
+  print(lengths.cm)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;method-2&#34;&gt;Method 2&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;#Calculating length in inches using indexing method of writing loop
+lengths.cm &amp;lt;- c()
+for(i in 1:nrow(df)){
+  lengths.cm[i] &amp;lt;- df$Length.in[i]*2.54
+  df$Length.cm[i] &amp;lt;- lengths.cm[i]
+  print(lengths.cm)
+}
+
+#To find the difference in lengths between each fish
+for(i in 1:nrow(df)-1){
+  print(df$Length.in[i+1] - df$Length.in[i])
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;control-statements&#34;&gt;Control Statements&lt;/h2&gt;
+&lt;p&gt;There are two control statements you can use in loops, break and next. These are conditional and tell the loop to either stop or skip over an element and continue onto the next one if a certain condition is met.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#Use the next control statement to write a loop that adds another year to the age if the fish was caught after June (Month &amp;gt; 6).
+for (i in 1:nrow(df)) {
+  if(df[i,3] &amp;lt; 6){
+    next
+  }else df$Age[i] &amp;lt;- df$Age[i] + 1
+}
+
+
+#Use the break control statement to subset the fish younger than 4.
+fish.sub &amp;lt;- df[FALSE,]
+for (i in 1:nrow(df)) {
+  if(df[i,2] &amp;gt; 3){
+    break
+  }else fish.sub[i,] &amp;lt;- df[i,]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;using-for-loops-to-plot&#34;&gt;Using for loops to plot&lt;/h2&gt;
+&lt;p&gt;If you need to create several plots of the same thing or one plot with many lines of different values it can be useful to use a for loop. The strucutre is pretty much the same as normal loop but you make a blank plot first.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(RColorBrewer)
+col. = brewer.pal(5, &amp;quot;Set2&amp;quot;)
+plot(0, 0, type = &amp;quot;n&amp;quot;, xlab = &amp;quot;Age&amp;quot;, ylab = &amp;quot;Length&amp;quot;, xlim = c(0,max(df$Age)), ylim = c(0,max(df$Length.cm)))
+for(i in 4:5){
+   points(x = df$Age, y = df[,i], pch = 16, col = col.[i])
+}
+
+par(mfrow = c(1,2))
+for (i in 4:5){
+  plot(x = df$Age, y = df[,i], pch = 16, col = col.[i], xlab = &amp;quot;Age&amp;quot;, ylab = &amp;quot;Length&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;nested-loops&#34;&gt;Nested loops&lt;/h2&gt;
+&lt;p&gt;Loops can be nested, with two or more for loops within each other. Nested loops are useful when dealing with matrices. The example below is setting each element in the matrix based on its position in the matrix.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mymat = matrix(nrow=10, ncol=10) # create a 10 x 10 matrix (of 10 rows and 10 columns)
+
+for(i in 1:dim(mymat)[1])  # for each row
+{
+  for(j in 1:dim(mymat)[2]) # for each column
+  {
+    mymat[i,j] = i*j     # assign values based on position: product of two indexes
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;alternatives-to-for-loops&#34;&gt;Alternatives to for loops&lt;/h2&gt;
+&lt;p&gt;An alternative to for loops is the apply family. It works with vector form and can be faster and easier to write than for loops. There are four main functions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;apply(): works on matrices&lt;/li&gt;
+&lt;li&gt;lapply(): works across lists and vectors&lt;/li&gt;
+&lt;li&gt;sapply(): simplifies output into a vector&lt;/li&gt;
+&lt;li&gt;mapply(): pass multiple variables or function arguments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The apply function takes 3 arguments, the object to be manipulated, the margin over which to apply the function (do you want to do it by rows(1) or by columns (2)), and the function you want to do. The function can be a built in one or one that you write. If the function you are using has additional arguments, you put that after the function. The structure looks like this:
+&lt;code&gt;apply(mymat, 2, sum, na.rm = TRUE)&lt;/code&gt;. This would calculate the sum of each column in the matrix and remove NA&amp;rsquo;s.&lt;/p&gt;
+</description>
+  </item>
+  
+<item>
+  <title>Introduction to ggplot2</title>
+  <link>/blog/introduction-to-ggplot2/</link>
+  <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
+  
+<guid>/blog/introduction-to-ggplot2/</guid>
+  <description>
+
+
+&lt;div id=&#34;tldr&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;TL:DR:&lt;/h4&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/Y7nvsFQpEuY&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;
+&lt;/iframe&gt;
+&lt;p&gt;If you are new to ggplot, welcome! If you are used to base R, its probably going to take awhile for you to get the hang of the syntax, but trust me, it’s worth it. GGplot is the tidyverse package for making graphics and you can control and customize pretty much every aspect. So let’s get started.&lt;/p&gt;
+&lt;p&gt;We are going to be working with the mtcars dataset, an oldie but a goodie. So we’ll take a look at the structure of the dataframe to see what we are working with.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+library(dplyr)
+
+head(mtcars)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(mtcars)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-basics&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The Basics&lt;/h4&gt;
+&lt;p&gt;To create any figure with ggplot you need to start off with the ggplot function. In this function, you include the dataset and the aesthetics section. The aesthetics is where you specify which columns you want as the x and y variables. After that, you need to add the type of plot you want to you create. For example, if I want to create a graph using points, I will add geom_point. All of the types of plots you can create follow this same syntax. Geom_whatever type of graph you want to make. If you want a line chart its geom_line, box and whisker plot is geom_boxplot.. etc etc.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;scatter-plot&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Scatter plot&lt;/h4&gt;
+&lt;p&gt;Let’s start off with a simple example, making a scatterplot. I am going to use the weight as the x -variable and drat as the y-variable. This is what a standard ggplot will look like.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data = mtcars, aes(x = wt, y = drat)) + 
+  geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-08-18-introduction-to-ggplot2_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;color-by-group&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Color by group&lt;/h4&gt;
+&lt;p&gt;Now, we are going to begin to customize it. Let’s start by color coding the points. We want to be able to quickly identify which points are from cars with 6 cylinders and which are from cars with 4 cylinders. We are first going to set the cylinder column as a factor using the mutate function. We are then going to create a plot like we did before, with the weight as the x-variable and drat as the y-variable but we are going to add this third argument, color. We are setting the color to be equal to the cylinder level. One of the benefits of using ggplot is that it ties seamlessly in with the rest of the tidyverse functions. This makes it really easy to manipulate your data and get it set up in the format you need then send it straight into a plot and it knows to use the manipulated data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars %&amp;gt;% 
+  mutate(cyl = as.factor(cyl)) %&amp;gt;% 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) + 
+  geom_point() &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-08-18-introduction-to-ggplot2_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;As you can probably tell, the style is very different from base r plots. GGplot plots are very customizable and there are many pre-made themes that you can use to change to style of the plot. You can also create your own custom theme and specify anything from the line size, font style and size of the labels, the gridlines, etc. I prefer to use the classic theme most of the time, it is most simplistic and minimal. All of the themes are called &lt;code&gt;theme_name()&lt;/code&gt;.&lt;/p&gt;
+&lt;div id=&#34;classic&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;Classic&lt;/h5&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars %&amp;gt;% 
+  mutate(cyl = as.factor(cyl)) %&amp;gt;% 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) + 
+  geom_point() +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-08-18-introduction-to-ggplot2_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;black-and-white&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;Black and white&lt;/h5&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars %&amp;gt;% 
+  mutate(cyl = as.factor(cyl)) %&amp;gt;% 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) + 
+  geom_point() + 
+  theme_bw()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-08-18-introduction-to-ggplot2_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dark&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;Dark&lt;/h5&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars %&amp;gt;% 
+  mutate(cyl = as.factor(cyl)) %&amp;gt;% 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) + 
+  geom_point() + 
+  theme_dark()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-08-18-introduction-to-ggplot2_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;multiple-datasets&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Multiple Datasets&lt;/h4&gt;
+&lt;p&gt;Now I’ll show you how to create a plot with two different datasets. I’m going to first subset the rows of data for cars with 6 cylinders and name that cars.sub.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cars.sub &amp;lt;- mtcars %&amp;gt;% 
+  filter(cyl == 6)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then I’m going to make a scatterplot of weight and drat for all cars using &lt;code&gt;geom_point()&lt;/code&gt;. Then I want to add a line for the data from our cars.sub dataframe. So I’ll add a new &lt;code&gt;geom_line()&lt;/code&gt; function with the same x and y names but the data argument is going to be the name of the new dataframe. I also want to change the color of the line, so outside of the aesthetics function, I’ll add color = “orange”.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars %&amp;gt;% 
+  ggplot(aes(x = wt, y = drat)) +
+  geom_point() +
+  geom_line(aes(x = wt, y = drat), data = cars.sub, color = &amp;quot;orange&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-08-18-introduction-to-ggplot2_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now we have a scatter plot and a line graph with data from 2 different datasets. If you wanted to use data from the same dataframe for the line part, you wouldn’t need to specify the data argument. Also, notice that the axis names default to the column names of the data you’re plotting. You can easily change these by using the labs function and just specify which axis (x or y) and the name.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars %&amp;gt;% 
+  ggplot(aes(x = wt, y = drat)) +
+  geom_point() +
+  geom_line(aes(x = wt, y = drat), data = cars.sub, color = &amp;quot;orange&amp;quot;) +
+  labs(x = &amp;quot;Weight&amp;quot;, title = &amp;quot;2 Datasets Plot&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-08-18-introduction-to-ggplot2_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;facets&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Facets&lt;/h4&gt;
+&lt;p&gt;Lastly, I’m going to show you how to create side-by-side plots by groups in your data. I want to look at the number of cars that get the same mpg but I want to break them out by how many cylinders the car has. So I want the mpg on the x-axis and I’m going to use &lt;code&gt;geom_histogram()&lt;/code&gt; because a histogram plots the number of times each event (which in this case is the mpg) occurs in the data. Then I am going to add a &lt;code&gt;facet_wrap()&lt;/code&gt; and use the “~” symbol and the column I want it to group the data by.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars %&amp;gt;% 
+  ggplot(aes(x = mpg)) +
+  geom_histogram() +
+  facet_wrap(~cyl, scales = &amp;quot;free&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-08-18-introduction-to-ggplot2_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;And now we have 3 different plots, with the number of cylinders at the top. You can see that the ranges of mpg is pretty different between the three groups. Adding scales = “free” argument into the facet_wrap function puts each plot on its own x or y scale.&lt;/p&gt;
+&lt;p&gt;This is just the beginning of what you can do with ggplot and I’ll be posting more tutorials where I go more in-depth on some features soon!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+  </item>
+  
+<item>
+  <title>Another COVID-19 Dashboard</title>
+  <link>/blog/another-covid-19-dashboard/</link>
+  <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+  
+<guid>/blog/another-covid-19-dashboard/</guid>
+  <description>&lt;p&gt;Recently there have been an overwhelming number of dashboards created to display COVID-19 data, so I decided to try my hand at it as well. I created a dashboard that allows you to search for a state and look at the breakdown of cases and deaths by county as well as the long-term and short-term (past week) number of cases. You can see if your state has really &amp;ldquo;flattened the curve&amp;rdquo; yet or not.&lt;/p&gt;
+&lt;p&gt;I used the &lt;a href=&#34;https://covid19datahub.io&#34;&gt;COVID19 R package&lt;/a&gt; which aggregates data from multiple sources including the Oxford Covid-19 Government Response Tracker, the New York Times, JHU CSSE and others.&lt;/p&gt;
+&lt;p&gt;If you want to take a look at the code it can be found &lt;a href=&#34;https://github.com/mcoshima/COVID-19-Dashboard&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Stay safe and wear your mask!&lt;/p&gt;
+</description>
+  </item>
+  
+<item>
+  <title>Learn Tidyverse: Pivot Functions </title>
+  <link>/blog/learn-tidyverse-pivot/</link>
+  <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>
+  
+<guid>/blog/learn-tidyverse-pivot/</guid>
+  <description>
+
+
+&lt;p&gt;TL:DR :&lt;/p&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/6xmsJ0y6FaU&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;
+&lt;/iframe&gt;
+&lt;p&gt;We will be using the pivot longer and pivot wider functions to change the shape of our dataframe. It is currently in a wide format, where there are multiple observations for each data point. For each individiual plant observed, sepal length and width and petal length and width and the type of species were all recorded. You may be used to using &lt;code&gt;melt&lt;/code&gt; and &lt;code&gt;spread&lt;/code&gt; from the &lt;code&gt;reshape2&lt;/code&gt; package but those functions are being phased out and &lt;code&gt;pivot_longer&lt;/code&gt; and &lt;code&gt;pivot_wider&lt;/code&gt; are replacing them. I’m going to start off by creating a fake dataset to work with that has 3 categories - lake, beach, and park - with counts of the number of visitors to each location since 2011.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+
+dat. &amp;lt;- data.frame(year = rep(seq(2011, 2020), each = 3), 
+                   location = rep(c(&amp;quot;beach&amp;quot;, &amp;quot;park&amp;quot;, &amp;quot;lake&amp;quot;), 10), 
+                   N = round(runif(30, 10,100))) 
+head(dat.)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   year location  N
+## 1 2011    beach 61
+## 2 2011     park 46
+## 3 2011     lake 60
+## 4 2012    beach 38
+## 5 2012     park 41
+## 6 2012     lake 31&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Currently, the data is in the long format, for each year there are 3 separate rows with counts of the number of visitors to each location. So we are going to first use the &lt;code&gt;pivot_wider&lt;/code&gt; function to turn it into a wide format.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dat.wider &amp;lt;- dat. %&amp;gt;% 
+  pivot_wider(names_from = location, 
+              values_from = N)
+
+dat.wider&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 4
+##     year beach  park  lake
+##    &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+##  1  2011    61    46    60
+##  2  2012    38    41    31
+##  3  2013    23    64    69
+##  4  2014    67    98    70
+##  5  2015    97    48    39
+##  6  2016    44    59    52
+##  7  2017    88    19    26
+##  8  2018    22    43    94
+##  9  2019    17    61    62
+## 10  2020    84    56    84&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The new dataset looks more like a square because it has more columns and fewer rows than our original dataframe did. Now, each row has 3 observations, the number of visitors to each location.&lt;/p&gt;
+&lt;p&gt;To turn it back to long format, we will use &lt;code&gt;pivot_longer&lt;/code&gt; and give the &lt;code&gt;col&lt;/code&gt; argument the columns we want to combine into one.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dat.wider %&amp;gt;% 
+  pivot_longer(cols = c(&amp;quot;beach&amp;quot;, &amp;quot;park&amp;quot;, &amp;quot;lake&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 30 x 3
+##     year name  value
+##    &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
+##  1  2011 beach    61
+##  2  2011 park     46
+##  3  2011 lake     60
+##  4  2012 beach    38
+##  5  2012 park     41
+##  6  2012 lake     31
+##  7  2013 beach    23
+##  8  2013 park     64
+##  9  2013 lake     69
+## 10  2014 beach    67
+## # ... with 20 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dat.wider %&amp;gt;% 
+  pivot_longer(cols = c(&amp;quot;beach&amp;quot;, &amp;quot;park&amp;quot;, &amp;quot;lake&amp;quot;),
+               names_to = &amp;quot;location&amp;quot;,
+               values_to = &amp;quot;N_visitors&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 30 x 3
+##     year location N_visitors
+##    &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;         &amp;lt;dbl&amp;gt;
+##  1  2011 beach            61
+##  2  2011 park             46
+##  3  2011 lake             60
+##  4  2012 beach            38
+##  5  2012 park             41
+##  6  2012 lake             31
+##  7  2013 beach            23
+##  8  2013 park             64
+##  9  2013 lake             69
+## 10  2014 beach            67
+## # ... with 20 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the first lines of code I only told the function which columns to combine. In the second set of code, I specified what names I wanted those columns to turn into. The &lt;code&gt;names_to&lt;/code&gt; argument gives the name of column that has the old column names and the &lt;code&gt;values_to&lt;/code&gt; argument gives the name of the column that will hold the data from the combined columns.&lt;/p&gt;
+&lt;p&gt;You may be wondering why long or wide format even matters. One reason is if you use ggplot, plotting is much easier when your data is in long format instead of wide.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dat. %&amp;gt;% 
+  ggplot(aes(x = year, y = N, color = location)) +
+  geom_line()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-07-14-learn-tidyverse-pivot_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dat.wider %&amp;gt;% 
+  ggplot(aes(x = year, y = beach)) +
+  geom_line(color = 1) +
+  geom_line(aes(x = year, y = park), color =2) +
+  geom_line(aes(x = year, y = lake), color = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-07-14-learn-tidyverse-pivot_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;In the above examples you can see that with only 3 lines of code I create a graph with 3 lines, one for each location, and colored according to location. If I used the wide data set, it takes 5 lines of code and I have to add each location separately. If you are going to do it this way, you might as well use base r plotting. Also, if you want to use more advanced ggplot functions such as &lt;code&gt;facet_wrap&lt;/code&gt;, having your data in the long format makes it much easier.&lt;/p&gt;
+&lt;p&gt;For more tutorials and tips like this, subscribe to our newsletter below!&lt;/p&gt;
+</description>
+  </item>
+  
+</channel>
+  </rss>

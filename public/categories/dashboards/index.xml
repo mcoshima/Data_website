@@ -1,33 +1,198 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dashboards on Data Solutions | Dedicated to helping businesses making data-driven decisions</title>
-    <link>/categories/dashboards/</link>
-    <description>Recent content in dashboards on Data Solutions | Dedicated to helping businesses making data-driven decisions</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jul 2020 00:00:00 +0000</lastBuildDate>
+  <title>dashboards on Data Solutions | Dedicated to helping businesses making data-driven decisions</title>
+  <link>/categories/dashboards/</link>
+  <description>Recent content in dashboards on Data Solutions | Dedicated to helping businesses making data-driven decisions</description>
+  <generator>Hugo -- gohugo.io</generator>
+<language>en-us</language>
+<lastBuildDate>Fri, 24 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="/categories/dashboards/index.xml" rel="self" type="application/rss+xml" />
+<item>
+  <title>Another COVID-19 Dashboard</title>
+  <link>/blog/another-covid-19-dashboard/</link>
+  <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+  
+<guid>/blog/another-covid-19-dashboard/</guid>
+  <description>&lt;p&gt;Recently there have been an overwhelming number of dashboards created to display COVID-19 data, so I decided to try my hand at it as well. I created a dashboard that allows you to search for a state and look at the breakdown of cases and deaths by county as well as the long-term and short-term (past week) number of cases. You can see if your state has really &amp;ldquo;flattened the curve&amp;rdquo; yet or not.&lt;/p&gt;
+&lt;p&gt;I used the &lt;a href=&#34;https://covid19datahub.io&#34;&gt;COVID19 R package&lt;/a&gt; which aggregates data from multiple sources including the Oxford Covid-19 Government Response Tracker, the New York Times, JHU CSSE and others.&lt;/p&gt;
+&lt;p&gt;If you want to take a look at the code it can be found &lt;a href=&#34;https://github.com/mcoshima/COVID-19-Dashboard&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Stay safe and wear your mask!&lt;/p&gt;
+</description>
+  </item>
+  
+<item>
+  <title>Create Customized Shiny Dashboards: Without Knowing CSS!</title>
+  <link>/blog/create-customized-shiny-dashboards-without-knowing-css-md/</link>
+  <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
+  
+<guid>/blog/create-customized-shiny-dashboards-without-knowing-css-md/</guid>
+  <description>&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Recently, I was making a Shiny Dashboard that I wanted to look nice but I wasn&amp;rsquo;t satisfied with any of available themes and designs. The easiest way to customize a dashboard is to change the color of the skin but you are limited to the pre-selected colors (blue, black, purple, green, red, and yellow). Additionally you can use 3rd party packages such as &lt;code&gt;semantic.dashboard&lt;/code&gt; or the &lt;code&gt;shinythemes&lt;/code&gt; to use a Bootstrap theme. All of these look better than the generic &amp;ldquo;out-of-the-box&amp;rdquo; dashboard theme, however, I wanted to use a specific color scheme for my dashboard. At first, it seemed like I would need to write a custom style file (in CSS) or add HTML and CSS code in the app, both of which are difficult for someone who is not very familiar with either language. I also wanted to avoid the second option because (this is purely for aesthetics), I found that the extra text made it more difficult to read through and the script overall looked &amp;ldquo;messy&amp;rdquo;.&lt;/p&gt;
+&lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
+&lt;p&gt;After a deep Google search, I came upon a fairly new package &lt;code&gt;dashboardthemes&lt;/code&gt;. In this package, there are 7 pre-made dashboard themes you can use, but it also allows you to easily create your own custom theme &lt;em&gt;without&lt;/em&gt; writing any CSS or HTML!! This package is exactly what I was looking for.&lt;/p&gt;
+&lt;h3 id=&#34;pre-made-themes&#34;&gt;Pre-Made themes:&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/dashboardthemes/pre-made_themes.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;my-theme&#34;&gt;My Theme&lt;/h2&gt;
+&lt;p&gt;The theme I built was based on the &lt;a href=&#34;https://www.nordtheme.com/docs/colors-and-palettes&#34;&gt;Nord color palette&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;general&#34;&gt;General&lt;/h3&gt;
+&lt;p&gt;I created a new script &amp;lsquo;theme_diy.R&amp;rsquo; and used the function &lt;code&gt;shinyDashboardThemeDIY()&lt;/code&gt; to create the object &lt;code&gt;nord_theme&lt;/code&gt;.  The first section is the general section which icludes the font family you want to use, the color of your text, the color of the background for the body of the page, and the font colors that will be used for each status (primary, info, success, warning, and danger). Allowing different font colors for different statuses is nice because sometimes certain colors look better with a dark font rather than a light font. To specify the color, I used the hex code but you can also use the &lt;code&gt;rgb()&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;theme_nord &amp;lt;- shinyDashboardThemeDIY(
+  
+  ### general
+  appFontFamily = &amp;quot;Arial&amp;quot;
+  ,appFontColor = &amp;quot;#D8DEE9&amp;quot;
+  ,primaryFontColor = &amp;quot;#434C5E&amp;quot;
+  ,infoFontColor = &amp;quot;#434C5E&amp;quot;
+  ,successFontColor = &amp;quot;#434C5E&amp;quot;
+  ,warningFontColor = &amp;quot;#434C5E&amp;quot;
+  ,dangerFontColor = &amp;quot;#434C5E&amp;quot;
+  ,bodyBackColor = &amp;quot;#2E3440&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;header&#34;&gt;Header&lt;/h3&gt;
+&lt;p&gt;The second section customizes the header part of the dashboard. You can change the color of the bar, the color of buttons and icons, and the color of them when you hover over them. You can also add a shadow boarder around the header to give it a 3d-dimensional look. I chose not too have a shadow to give it a flat look.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;### header
+,logoBackColor = &amp;quot;#3B4252&amp;quot;
+
+,headerButtonBackColor = &amp;quot;#3B4252&amp;quot;
+,headerButtonIconColor = &amp;quot;#4C566A&amp;quot;
+,headerButtonBackColorHover = &amp;quot;#3B4252&amp;quot;
+,headerButtonIconColorHover = &amp;quot;#81A1C1&amp;quot;
+
+,headerBackColor = &amp;quot;#3B4252&amp;quot;
+,headerBoxShadowColor = &amp;quot;&amp;quot;
+,headerBoxShadowSize = &amp;quot;0px 0px 0px&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The next section is for the sidebar. You can add spacing around objects (padding), shadow boxes, and change the color of the menu background, search bar, and tabs. There are a lot of options for tabs, you can change text color and size, the boarder around a tab, the colors for selected tabs or hovering over one (if you don&amp;rsquo;t want it to be different just set it to the same color as the normal tab color).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;### sidebar
+  ,sidebarBackColor = &amp;quot;#434C5E&amp;quot;
+  ,sidebarPadding = 0
+  
+  ,sidebarMenuBackColor = &amp;quot;transparent&amp;quot;
+  ,sidebarMenuPadding = 0
+  ,sidebarMenuBorderRadius = 0
+  
+  ,sidebarShadowRadius = &amp;quot;&amp;quot;
+  ,sidebarShadowColor = &amp;quot;0px 0px 0px&amp;quot;
+  
+  ,sidebarUserTextColor = &amp;quot;#D8DEE9&amp;quot;
+  
+  ,sidebarSearchBackColor = &amp;quot;#4C566A&amp;quot;
+  ,sidebarSearchIconColor = &amp;quot;#E5E9F0&amp;quot;
+  ,sidebarSearchBorderColor = &amp;quot;#4C566A&amp;quot;
+  
+  ,sidebarTabTextColor = &amp;quot;#ECEFF4&amp;quot;
+  ,sidebarTabTextSize = 14
+  ,sidebarTabBorderStyle = &amp;quot;none&amp;quot;
+  ,sidebarTabBorderColor = &amp;quot;none&amp;quot;
+  ,sidebarTabBorderWidth = 0
+  
+  ,sidebarTabBackColorSelected = &amp;quot;#3B4252&amp;quot;
+  ,sidebarTabTextColorSelected = &amp;quot;#ECEFF4&amp;quot;
+  ,sidebarTabRadiusSelected = &amp;quot;5px&amp;quot;
+  
+  ,sidebarTabBackColorHover = &amp;quot;#3B4252&amp;quot;
+  ,sidebarTabTextColorHover = &amp;quot;#81A1C1&amp;quot;
+  ,sidebarTabBorderStyleHover = &amp;quot;none&amp;quot;
+  ,sidebarTabBorderColorHover = &amp;quot;none&amp;quot;
+  ,sidebarTabBorderWidthHover = 0
+  ,sidebarTabRadiusHover = &amp;quot;5px&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;boxes&#34;&gt;Boxes&lt;/h3&gt;
+&lt;p&gt;This section sets the colors for various types of boxes you can use in a dashboard. The &lt;code&gt;boxBackColor&lt;/code&gt; is for a basic box. Again, I chose not to add a shadow border because I wanted the flat look. I increased the font size so that titles of boxes are 18 pt. You can also set colors for the status options. I chose the following colors:&lt;br&gt;
+&lt;img src=&#34;/blog/dashboardthemes/box_colors.png&#34; alt=&#34;&#34;&gt;{width=800px height=200px}&lt;/p&gt;
+&lt;p&gt;You can also adjust the color of the boxes of a tab, I made mine the same other box backgrounds.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;### boxes
+  ,boxBackColor = &amp;quot;#434C5E&amp;quot;
+  ,boxBorderRadius = 5
+  ,boxShadowSize = &amp;quot;0px 0px 0px&amp;quot;
+  ,boxShadowColor = &amp;quot;&amp;quot;
+  ,boxTitleSize = 18
+  ,boxDefaultColor = &amp;quot;#434C5E&amp;quot;
+  ,boxPrimaryColor = &amp;quot;#88C0D0&amp;quot;
+  ,boxInfoColor = &amp;quot;#8FBCBB&amp;quot;
+  ,boxSuccessColor = &amp;quot;#A3BE8C&amp;quot;
+  ,boxWarningColor = &amp;quot;#EBCB8B&amp;quot;
+  ,boxDangerColor = &amp;quot;#BF616A&amp;quot;
+  
+  ,tabBoxTabColor = &amp;quot;#434C5E&amp;quot;
+  ,tabBoxTabTextSize = 16
+  ,tabBoxTabTextColor = &amp;quot;#D8DEE9&amp;quot;
+  ,tabBoxTabTextColorSelected = &amp;quot;#D8DEE9&amp;quot;
+  ,tabBoxBackColor = &amp;quot;#434C5E&amp;quot;
+  ,tabBoxHighlightColor = &amp;quot;#4C566A&amp;quot;
+  ,tabBoxBorderRadius = 5 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;inputs-and-tables&#34;&gt;Inputs and Tables&lt;/h3&gt;
+&lt;p&gt;The last two sections are where you customize the buttons, text boxes, and tables. You can change the color of the button when you hover over it, and you can adjust the radius of the border. The text box back color changes text boxes and dropdown menu colors. You can change a table&amp;rsquo;s background color, border color and border thickness.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  ### inputs
+  ,buttonBackColor = &amp;quot;#D8DEE9&amp;quot;
+  ,buttonTextColor = &amp;quot;#2E3440&amp;quot;
+  ,buttonBorderColor = &amp;quot;#2E3440&amp;quot;
+  ,buttonBorderRadius = 5
+  
+  ,buttonBackColorHover = &amp;quot;#E5E9F0&amp;quot;
+  ,buttonTextColorHover = &amp;quot;#3B4252&amp;quot;
+  ,buttonBorderColorHover = &amp;quot;#2E3440&amp;quot;
+  
+  ,textboxBackColor = &amp;quot;#4C566A&amp;quot;
+  ,textboxBorderColor = &amp;quot;#2E3440&amp;quot;
+  ,textboxBorderRadius = 5
+  ,textboxBackColorSelect = &amp;quot;#3B4252&amp;quot;
+  ,textboxBorderColorSelect = &amp;quot;#2E3440&amp;quot;
+  
+  ### tables
+  ,tableBackColor = &amp;quot;#4C566A&amp;quot;
+  ,tableBorderColor = &amp;quot;#2E3440&amp;quot;
+  ,tableBorderTopSize = 1
+  ,tableBorderRowSize = 1
+  
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After you have finished setting everything up, you will call your custom theme in the app.R file. At the top of the file, I read in the theme with &lt;code&gt;source(&amp;quot;theme_diy.R&amp;quot;)&lt;/code&gt;. Then in the UI body call that theme.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ui &amp;lt;- dashboardPage(
+  dashboardHeader(),
+  dashboardBody(
+    theme_nord,
     
-	<atom:link href="/categories/dashboards/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Another COVID-19 Dashboard</title>
-      <link>/blog/another-covid-19-dashboard/</link>
-      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+    ### the rest of body elements
+  )
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;custom-logo&#34;&gt;Custom Logo&lt;/h3&gt;
+&lt;p&gt;The theme does not change the logo part of the dashboard. The logo is your dashboard&amp;rsquo;s name or the section in the top left above the side bar. To change this, use the function &lt;code&gt;shinyDashboardLogoDIY()&lt;/code&gt;. I included this in the same script as the theme. You can specify which text is bold and which is not (boldText and mainText), the size of the text, and add a badge if you want. I did not include a badge in mine and I achieved this by setting &lt;code&gt;badgeText=&amp;quot;&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;logo_nord &amp;lt;- shinyDashboardLogoDIY(
+  boldText = &amp;quot;COVID-19&amp;quot;
+  ,mainText = &amp;quot;in Your State&amp;quot;
+  ,textSize = 18
+  ,badgeText = &amp;quot;&amp;quot;
+  ,badgeTextColor = &amp;quot;&amp;quot;
+  ,badgeTextSize = 0
+  ,badgeBackColor = &amp;quot;#3B4252&amp;quot;
+  ,badgeBorderRadius = 0
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To use your custom logo in your dashboard, source the script at the top of the app.R file, then add it into the UI section.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; ui &amp;lt;- dashboardPage(
       
-      <guid>/blog/another-covid-19-dashboard/</guid>
-      <description>Recently there have been an overwhelming number of dashboards created to display COVID-19 data, so I decided to try my hand at it as well.</description>
-    </item>
+      ### ui header
+      dashboardHeader(
     
-    <item>
-      <title>Create Customized Shiny Dashboards: Without Knowing CSS!</title>
-      <link>/blog/create-customized-shiny-dashboards-without-knowing-css-md/</link>
-      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/create-customized-shiny-dashboards-without-knowing-css-md/</guid>
-      <description>Problem Recently, I was making a Shiny Dashboard that I wanted to look nice but I wasn&amp;rsquo;t satisfied with any of available themes and designs.</description>
-    </item>
-    
-  </channel>
-</rss>
+        ### changing logo
+        title = logo_nord
+        ...
+      )
+ )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;final-theme&#34;&gt;Final Theme&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;/blog/2020-07-08-create-customized-shiny-dashboards-without-knowing-css_files/final_theme.PNG&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;lessons-learned&#34;&gt;Lessons Learned&lt;/h3&gt;
+&lt;p&gt;Look at the script of a template theme and match the current color to what items it correspondeds to if you are unsure what the argument refers to.&lt;/p&gt;
+&lt;p&gt;Save the changes as you go and reload your shiny app each time.&lt;/p&gt;
+&lt;p&gt;Follow the guidelines for using the Nord palette (or the palette of your choice) to inform which colors are used for each item.&lt;/p&gt;
+&lt;p&gt;Overall, I am extremely satisfied with the theme I made and this package makes it easy to make as many as I desire. Next, I will probably make a &amp;ldquo;light-mode&amp;rdquo; Nord theme.&lt;/p&gt;
+</description>
+  </item>
+  
+</channel>
+  </rss>
