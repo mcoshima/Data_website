@@ -1,0 +1,311 @@
+---
+title: 'The Perfect Taylor Swift Playlist? '
+author: Meg
+date: '2020-11-19'
+image: images/blog/TS_albums.jpg
+slug: the-perfect-taylor-swift-playlist
+categories:
+  - r
+tags:
+  - R
+---
+
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+
+
+<p>One thing I really admire about Taylor Swift is her ability to tell a story. The way she weaves in details and characters, you feel like each song is about you or a friend. I think one reason for her popularity is because her music is so relateable. In particular, she infamously writes about her loves and breakups and exs and those songs have carried so many through love and heartbreak of their own. As someone currently going through a breakup, I thought it would be a good distraction to try and create a playlist for the emotions I’m feeling to get me through this heartbreak. And I thought I would use this as an opportunity to explore sentiment analysis with tidytext. So I hope that the fruits of my heartbreak will prove useful for someone either interested in sentiment analysis or also looking for a curated Taylor Swift playlist.</p>
+<div id="the-data" class="section level3">
+<h3>The Data</h3>
+<p>The data I am using today comes from the Tidy Tuesday dataset. The dataset contains lyrics from Taylor Swift and Beyoncé songs (Beyoncé lyrics analysis is forth coming, do not worry fellow hive members), as well as album sales and Billboard chart rankings. First I will load the data from the <code>tidytuesdayR</code> github page.</p>
+<pre class="r"><code>library(tidytuesdayR)
+library(tidyverse)
+library(tidytext)
+
+ts &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-29/taylor_swift_lyrics.csv&#39;)
+head(ts)</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   Artist     Album     Title         Lyrics                                     
+##   &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;                                      
+## 1 Taylor Sw… Taylor S… Tim McGraw    &quot;He said the way my blue eyes shinx\nPut t…
+## 2 Taylor Sw… Taylor S… Picture to B… &quot;State the obvious, I didn&#39;t get my perfec…
+## 3 Taylor Sw… Taylor S… Teardrops on… &quot;Drew looks at me,\nI fake a smile so he w…
+## 4 Taylor Sw… Taylor S… A Place in T… &quot;I don&#39;t know what I want, so don&#39;t ask me…
+## 5 Taylor Sw… Taylor S… Cold As You   &quot;You have a way of coming easily to me\nAn…
+## 6 Taylor Sw… Taylor S… The Outside   &quot;I didn&#39;t know what I would find\nWhen I w…</code></pre>
+<p>For this post we are only going to focus on the Taylor Swift lyrics and you can see that dataframe has 4 columns:</p>
+<ul>
+<li>Artist<br />
+</li>
+<li>Album<br />
+</li>
+<li>Song title<br />
+</li>
+<li>Lyrics</li>
+</ul>
+<p>The lyrics are all in one row so the first step is to turn this into a tidytext format, which means a tibble with one token per row. A token is defined as a meaningful unit of text, most often a word, and tokenization is the process of breaking a vector down into tokens. We will use the <code>unnest_tokens()</code> function to do this. This function takes 2 arguments, the name of the new column that will be created with the tokens and the name of the current column to be turned into tokens. Note, I named the new column “word” so that it will match up with another tibble in the next step. The function separates the vectors into single words and by default turns everything into lowercase letters.</p>
+<pre class="r"><code>ts %&gt;% 
+  unnest_tokens(word, Lyrics)</code></pre>
+<pre><code>## # A tibble: 48,555 x 4
+##    Artist       Album        Title      word 
+##    &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;
+##  1 Taylor Swift Taylor Swift Tim McGraw he   
+##  2 Taylor Swift Taylor Swift Tim McGraw said 
+##  3 Taylor Swift Taylor Swift Tim McGraw the  
+##  4 Taylor Swift Taylor Swift Tim McGraw way  
+##  5 Taylor Swift Taylor Swift Tim McGraw my   
+##  6 Taylor Swift Taylor Swift Tim McGraw blue 
+##  7 Taylor Swift Taylor Swift Tim McGraw eyes 
+##  8 Taylor Swift Taylor Swift Tim McGraw shinx
+##  9 Taylor Swift Taylor Swift Tim McGraw put  
+## 10 Taylor Swift Taylor Swift Tim McGraw those
+## # … with 48,545 more rows</code></pre>
+<p>Next we want to remove some extremely common words such as “the”, “of”, “to”, etc. We do this by using stop words and the <code>anti_join()</code> function. We also are going to get rid of some frequently used sound effect words such as “ooh” or “ah”.</p>
+<pre class="r"><code>data(&quot;stop_words&quot;)
+
+custom_stop &lt;- data.frame(word = c(&quot;ooh&quot;, &quot;yeah&quot;, &quot;ah&quot;, &quot;uh&quot;, &quot;ha&quot;, &quot;woah&quot;))
+
+tidy_ts &lt;- ts %&gt;% 
+  unnest_tokens(word, Lyrics) %&gt;% 
+  anti_join(stop_words) %&gt;% 
+  anti_join(custom_stop)</code></pre>
+<p>Now let’s take a look at some of her most used words. This figure shows the top 15 most frequent words for each album:</p>
+<pre class="r"><code>tidy_ts %&gt;% 
+  count(word, sort = T)</code></pre>
+<pre><code>## # A tibble: 2,574 x 2
+##    word      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 love    248
+##  2 time    225
+##  3 wanna   158
+##  4 baby    153
+##  5 stay    100
+##  6 gonna    98
+##  7 night    96
+##  8 bad      80
+##  9 girl     80
+## 10 home     76
+## # … with 2,564 more rows</code></pre>
+<pre class="r"><code>tidy_ts %&gt;% 
+  group_by(Album) %&gt;% 
+  count(word) %&gt;% 
+  group_by(Album) %&gt;% 
+  slice_max(order_by = n, n = 15) %&gt;% 
+  ungroup() %&gt;% 
+  mutate(word = reorder_within(word, n, Album),
+         Album = factor(Album, levels = c(&quot;Taylor Swift&quot;, &quot;Fearless&quot;, &quot;Speak Now&quot;, &quot;Red&quot;, &quot;1989&quot;, &quot;reputation&quot;, &quot;Lover&quot;, &quot;folklore&quot;))) %&gt;%
+  ggplot(aes(x = word, y = n, fill = Album)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~Album, scales = &quot;free&quot;) +
+  coord_flip() +
+  scale_x_reordered() +
+  scale_y_continuous(expand = c(0,0))</code></pre>
+<p><img src="/blog/TS_lyrics_analysis_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><em>For a detailed explanation on how to make this plot see Julia Silge’s <a href="https://juliasilge.com/blog/reorder-within/">post</a> on using the <code>reorder_within()</code> function.</em></p>
+<p>Some things we notice right away from just looking at this figure are that time is very important throughout the folklore album, love is one of the highest ranked words in all of her albums except Red and Reputation, and her earlier albums, Speak Now, Taylor Swift, and Fearless, used mostly verbs and her newer albums used more nouns. We can make a word cloud of the top 150 words she uses.</p>
+<p><img src="/blog/TS_lyrics_analysis_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="sentiment-analysis" class="section level3">
+<h3>Sentiment Analysis</h3>
+<p>Now, to create the perfect playlists for any mood, we are going to use sentiment analysis to classify each song into a category and then create playlists from those categories. We will be evaluating the lyrics both as individual words and in the overall context of the song.</p>
+<p>Using the AFINN sentiment lexicon we will compare all of the songs. The AFINN lexicon measures sentiment on a scale of -5 to 5 for negative and positive words instead of a binary scale like the NRC or Bing.</p>
+<pre class="r"><code>library(tidytext)
+afinn &lt;- tidy_ts %&gt;% 
+  inner_join(get_sentiments(&quot;afinn&quot;)) %&gt;% 
+  group_by(Title, Album) %&gt;% 
+  summarise(sentiment = sum(value)) %&gt;% 
+  mutate(Album = factor(Album, levels = c(&quot;Taylor Swift&quot;, 
+                                          &quot;Fearless&quot;, 
+                                          &quot;Speak Now&quot;, 
+                                          &quot;Red&quot;, 
+                                          &quot;1989&quot;, 
+                                          &quot;reputation&quot;, 
+                                          &quot;Lover&quot;, 
+                                          &quot;folklore&quot;)))</code></pre>
+<pre><code>## Joining, by = &quot;word&quot;</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;Title&#39; (override with `.groups` argument)</code></pre>
+<pre class="r"><code>ggplot(afinn, aes(Title, sentiment, fill = Album)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~Album, ncol = 1, scales = &quot;free&quot;) +
+  scale_x_discrete(guide = guide_axis(n.dodge=3))</code></pre>
+<p><img src="/blog/TS_lyrics_analysis_files/figure-html/unnamed-chunk-6-1.png" width="960" /></p>
+<p>When we break down the sentiments of each song in an album, we see some surprising and some not so surprising trends. Unsurprisingly, Lover, Fearless, and Taylor Swift, are mostly positive songs whereas Reputation is more negative or neutral. I was surprised to see that 1989 had many negative songs as well as folklore. I tend to think of 1989 as an upbeat pop album that is generally about starting over, however according to this analysis, most songs tend to be more negative. The folklore album is more indie and deep and I suppose more of the songs are sad stories. Now that we have a general idea of which songs are negative and which are positive, let’s make our first attempt at a playlist. We will do this by just grouping together songs by positive or negative sentiments and we will start from the saddest to the happiest.</p>
+<pre class="r"><code>tidy_ts %&gt;% 
+  inner_join(get_sentiments(&quot;afinn&quot;)) %&gt;% 
+  group_by(Title, Album) %&gt;% 
+  summarise(sentiment = sum(value)) %&gt;% 
+  ungroup() %&gt;% 
+  mutate(group = ifelse(sentiment &lt; 0, &quot;negative&quot;, &quot;positive&quot;),
+         Title = reorder_within(Title, -sentiment, group)) %&gt;% 
+  ggplot(aes(x = Title, y = sentiment, fill = Album)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~group, scales = &quot;free&quot;) +
+  coord_flip() +
+  scale_x_reordered() +
+  scale_y_continuous(expand = c(0,0))</code></pre>
+<pre><code>## Joining, by = &quot;word&quot;</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;Title&#39; (override with `.groups` argument)</code></pre>
+<p><img src="/blog/TS_lyrics_analysis_files/figure-html/unnamed-chunk-7-1.png" width="1152" /></p>
+<p>Overall, this list looks pretty good but I think we can do better. There are a few songs that seem out of place to me. So now that we have a basic, negative or positive understanding of Taylor’s songs, lets break it down further by emotions. We are going to use the <code>syuzhet</code> package to access the NRC emotion lexicon. The emotion lexicon is a list of words and their associations with two sentiments (negative and positive) and eight emotions: anger, fear, anticipation, trust, surprise, sadness, joy, and disgust. The function <code>get_nrc_sentiment()</code> takes a vector of lines of text and returns a dataframe where each row is a line of text and the emotions are represented in columns.</p>
+<pre class="r"><code>library(syuzhet)
+
+
+word_vec &lt;- tidy_ts %&gt;% 
+  select(word) %&gt;% 
+  pull() 
+  
+emotions &lt;- get_nrc_sentiment(word_vec)
+
+emotions2 &lt;- tidy_ts %&gt;% 
+  bind_cols(emotions)
+
+emotions2 %&gt;% 
+  select(-c(1,2)) %&gt;% 
+  group_by(Title) %&gt;% 
+  summarise_if(is.numeric, sum) %&gt;% 
+  select(Title, sadness, anger, disgust, fear) %&gt;% 
+  slice_max(order_by = sadness, n = 10)</code></pre>
+<pre><code>## # A tibble: 13 x 5
+##    Title           sadness anger disgust  fear
+##    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+##  1 Miss Americana       25    22      13    23
+##  2 Bad Blood            24    28      22    28
+##  3 Jump Then Fall       22     4       3     8
+##  4 mad woman            22    26      19    24
+##  5 Blank Space          20    26      12    31
+##  6 Shake It Off         20    17      19    18
+##  7 Cruel Summer         19    14      13    16
+##  8 Haunted              19     1       1     7
+##  9 Stay Stay Stay       19    17      16    19
+## 10 Gorgeous             17    15      15    14
+## 11 Red                  17     7       2     7
+## 12 So It Goes           17    11      10    11
+## 13 The Story of Us      17    12       3    18</code></pre>
+<pre class="r"><code>emotions2 %&gt;% 
+  select(-c(1,2)) %&gt;% 
+  group_by(Title) %&gt;% 
+  summarise_if(is.numeric, sum) %&gt;% 
+  select(Title, sadness, anger, disgust, fear) %&gt;% 
+  slice_max(order_by = anger, n = 10)</code></pre>
+<pre><code>## # A tibble: 10 x 5
+##    Title           sadness anger disgust  fear
+##    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+##  1 Bad Blood            24    28      22    28
+##  2 Blank Space          20    26      12    31
+##  3 mad woman            22    26      19    24
+##  4 Picture to Burn      14    23      17    19
+##  5 Miss Americana       25    22      13    23
+##  6 Don’t Blame Me       12    18      19    12
+##  7 Shake It Off         20    17      19    18
+##  8 Stay Stay Stay       19    17      16    19
+##  9 Afterglow            15    16       9    15
+## 10 Gorgeous             17    15      15    14</code></pre>
+<p>When we look at the top 10 songs ranked by the number of sad or angry lines, we see a slightly different line up from the songs that were considered most negative. First, Shake it off ranked as the most negative in the previous figure but with this one, Bad Blood is the saddest, followed by mad woman. When we rank them by anger, Bad Blood is top, followed by Blank Space. I think any Taylor fan would agree that Blank Space and Bad Blood are much more angry songs than Shake it Off. Of course, this second list is not perfect, but it’s an improvement. Now lets look at the other negative emotions, disgust and fear.</p>
+<pre class="r"><code>emotions2 %&gt;% 
+  select(-c(1,2)) %&gt;% 
+  group_by(Title) %&gt;% 
+  summarise_if(is.numeric, sum) %&gt;% 
+  select(Title, sadness, anger, disgust, fear) %&gt;% 
+  slice_max(order_by = disgust, n = 10)</code></pre>
+<pre><code>## # A tibble: 12 x 5
+##    Title                       sadness anger disgust  fear
+##    &lt;chr&gt;                         &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+##  1 Bad Blood                        24    28      22    28
+##  2 Don’t Blame Me                   12    18      19    12
+##  3 mad woman                        22    26      19    24
+##  4 Shake It Off                     20    17      19    18
+##  5 Picture to Burn                  14    23      17    19
+##  6 Stay Stay Stay                   19    17      16    19
+##  7 Gorgeous                         17    15      15    14
+##  8 Dancing With Our Hands Tied      14    13      14    13
+##  9 Clean                             4     1      13     3
+## 10 Cruel Summer                     19    14      13    16
+## 11 Miss Americana                   25    22      13    23
+## 12 The Man                          13     7      13     7</code></pre>
+<pre class="r"><code>emotions2 %&gt;% 
+  select(-c(1,2)) %&gt;% 
+  group_by(Title) %&gt;% 
+  summarise_if(is.numeric, sum) %&gt;%  
+  select(Title, sadness, anger, disgust, fear) %&gt;% 
+  slice_max(order_by = fear, n = 10)</code></pre>
+<pre><code>## # A tibble: 10 x 5
+##    Title           sadness anger disgust  fear
+##    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+##  1 Blank Space          20    26      12    31
+##  2 Bad Blood            24    28      22    28
+##  3 False God             7     5       1    24
+##  4 mad woman            22    26      19    24
+##  5 Miss Americana       25    22      13    23
+##  6 Picture to Burn      14    23      17    19
+##  7 Stay Stay Stay       19    17      16    19
+##  8 Shake It Off         20    17      19    18
+##  9 The Story of Us      17    12       3    18
+## 10 Cruel Summer         19    14      13    16</code></pre>
+<p>Unsurprisingly, we see some of the same titles at the top of the list. So let’s rank these songs by a typical flow of negative emotions; we will start with sadness, then anger, disgust, and finally fear. To do this, I found the total number of lines for each negative emotion per song, grouped them by emotion and to prevent the same song from showing up multiple times, I only kept the row for the emotion that ranked highest. For example, Bad Blood ranked high for all four emotions but I kept the emotion that had the greatest score in the song and ties were broken by the order of emotions (i.e. anger beat fear and sadness beat anger).</p>
+</div>
+<div id="negative-playlist" class="section level3">
+<h3>Negative Playlist</h3>
+<pre class="r"><code>emotions2 %&gt;% 
+  select(-c(1,2)) %&gt;% 
+  group_by(Title) %&gt;% 
+  summarise_if(is.numeric, sum) %&gt;% 
+  mutate(net_sentiment = positive - negative) %&gt;%  #get overall sentiment (negative numbers = negative sentiment)
+  filter(net_sentiment &lt; 0) %&gt;%  #find which songs have an overall negative sentiment
+  select(Title, sadness, anger, disgust, fear) %&gt;% 
+  pivot_longer(cols = c(&quot;sadness&quot;, &quot;anger&quot;, &quot;disgust&quot;, &quot;fear&quot;), names_to = &quot;emotion&quot;) %&gt;% 
+  group_by(Title) %&gt;% 
+  slice_max(order_by = value, n = 1, with_ties = FALSE) %&gt;% 
+  mutate(emotion = factor(emotion, levels = c(&quot;sadness&quot;, &quot;anger&quot;, &quot;disgust&quot;, &quot;fear&quot;))) %&gt;% 
+  arrange(emotion) %&gt;% 
+  ungroup() %&gt;% 
+  mutate(Title = reorder_within(Title, value, emotion)) %&gt;% 
+  ggplot(aes(x = Title, y = value, fill = emotion)) +
+  geom_col() +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~emotion, scales = &quot;free&quot;) +
+  coord_flip() +
+  scale_x_reordered() +
+  scale_y_continuous(expand = c(0,0)) </code></pre>
+<p><img src="/blog/TS_lyrics_analysis_files/figure-html/unnamed-chunk-10-1.png" width="960" /></p>
+<p>I think the angry songs were classified best. I think the sad songs left out a lot of iconic breakup songs such as Teardrops on my Guitar, Red, Back to December, exile, and a few others. I would say I’m only half satisfied with this playlist.</p>
+</div>
+<div id="positive-playlist" class="section level3">
+<h3>Positive Playlist</h3>
+<p>Of course, once you go through the negative emotions, you will inevitiably start to be happy and maybe, eventually, fall in love again. At that point, you will want a different set of playlists to fit your moods. So let’s do the same process but using the positive songs and emotions.</p>
+<pre class="r"><code>emotions2 %&gt;% 
+  select(-c(1,2)) %&gt;% 
+  group_by(Title) %&gt;% 
+  summarise_if(is.numeric, sum) %&gt;%  
+  mutate(net_sentiment = positive - negative) %&gt;%  #get overall sentiment (negative numbers = negative sentiment)
+  filter(net_sentiment &gt; 0) %&gt;%  #find which songs have an overall positive sentiment
+  select(Title, anticipation, surprise, joy, trust) %&gt;% 
+  pivot_longer(cols = c(&quot;anticipation&quot;, &quot;surprise&quot;, &quot;joy&quot;, &quot;trust&quot;), names_to = &quot;emotion&quot;) %&gt;% 
+  group_by(Title) %&gt;% 
+  slice_max(order_by = value, n = 1, with_ties = FALSE) %&gt;% 
+  mutate(emotion = factor(emotion, levels = c(&quot;anticipation&quot;, &quot;surprise&quot;, &quot;joy&quot;, &quot;trust&quot;))) %&gt;% 
+  arrange(emotion) %&gt;% 
+  ungroup() %&gt;% 
+  mutate(Title = reorder_within(Title, value, emotion)) %&gt;% 
+  ggplot(aes(x = Title, y = value, fill = emotion)) +
+  geom_col() +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~emotion, scales = &quot;free&quot;) +
+  coord_flip() +
+  scale_x_reordered() +
+  scale_y_continuous(expand = c(0,0))</code></pre>
+<p><img src="/blog/TS_lyrics_analysis_files/figure-html/unnamed-chunk-11-1.png" width="960" />
+Overall, I think the Joy playlist is most accurate but there are still some songs that shouldn’t be in there, like Teardrops on my Guitar, betty, Death by a Thousands Cuts, etc. For the surprise category, Better than Revenge fits the category but the overall sentiment is not a positive one, it’s more negative and it could be categorized as angry or disgust.</p>
+</div>
+<div id="conclusions" class="section level3">
+<h3>Conclusions</h3>
+<p>Overall, I think the sentiment analysis generally categorized songs in the correct positive or negative category. Of course it was not perfect but that is because of the word choice Taylor used or the words that were available in the NRC and AFINN lexicons. I did also try the Bing lexicon but the results did not significantly change. Trying to use the NRC emotions lexicons to categorize songs into playlists for moods partially worked, however, you would still want to use your own judgement to re-categorize some songs. This exercise was a good distraction for me and I hope it helped you understand sentiment analysis a bit more.</p>
+</div>
+<div id="resources" class="section level3">
+<h3>Resources</h3>
+<p>For more information on sentiment analysis please see:</p>
+<ul>
+<li><a href="https://www.tidytextmining.com/sentiment.html">tidytext analysis</a><br />
+</li>
+<li><a href="https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html?">syuzhet package</a></li>
+</ul>
+</div>
