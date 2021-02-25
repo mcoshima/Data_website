@@ -1,0 +1,240 @@
+---
+title: String Manipulation with Stringr
+author: Meg
+date: '2021-02-25'
+slug: []
+image: images/blog/helloworld.png
+categories:
+  - r
+tags:
+  - R
+---
+
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+
+
+<div id="what-is-a-string" class="section level2">
+<h2>What is a string?</h2>
+<p>In coding, strings, also known as character strings, are sequences of characters that are surrounded by quotation marks. This often includes letters and can include numbers. Character strings are often used for names and categorizing data and it can be extremely useful to learn how to work with this type easily.</p>
+<p><em>Note: if you prefer a video tutorial, you can see it here: </em></p>
+<div id="basic-string-manipulation" class="section level3">
+<h3>Basic string manipulation</h3>
+<p><code>"hello world"</code> is an example of a basic character string. It contains two words that are surrounded by quotation marks. Typically when we are working with strings we have more than one, they will be in a vector or in a column(s) in a dataframe. The main package we will be using to manipulate strings will be <code>stringr</code>. There are of course many ways to do these functions but stringr is the tidyverse method for string manipulation so the grammar and structure are consistent with other tidyverse packages.</p>
+<p>First we will create a vector of strings called fruits that contains the names of 5 fruits.</p>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(stringr)
+fruits &lt;- c(&quot;Apple&quot;, &quot;Banana&quot;, &quot;Kiwi&quot;, &quot;Pineapple&quot;, &quot;Grape&quot;)</code></pre>
+<p>If we want to get some summary stats of our vector we can use the functions <code>str_count()</code> or <code>str_length()</code>. The functions tell us how many characters are in each string.</p>
+<pre class="r"><code>str_count(fruits)</code></pre>
+<pre><code>## [1] 5 6 4 9 5</code></pre>
+<pre class="r"><code>str_length(fruits)</code></pre>
+<pre><code>## [1] 5 6 4 9 5</code></pre>
+<p>Now, say we want to answer a few questions:</p>
+<pre class="r"><code>## Which strings end with the letter e?
+str_ends(fruits, &quot;e&quot;)</code></pre>
+<pre><code>## [1]  TRUE FALSE FALSE  TRUE  TRUE</code></pre>
+<pre class="r"><code>## Which strings start with the letter a?
+str_starts(fruits, &quot;A&quot;)</code></pre>
+<pre><code>## [1]  TRUE FALSE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>## Do any strings have &quot;pple&quot; in them? 
+str_detect(fruits, &quot;pple&quot;)</code></pre>
+<pre><code>## [1]  TRUE FALSE FALSE  TRUE FALSE</code></pre>
+<p>You can also quickly convert all letters to the same case by using <code>str_to_lower()</code> or <code>str_to_upper()</code> which can be handy for making everything uniform so it is easier to match up or group by later.</p>
+<pre class="r"><code>str_to_lower(fruits)</code></pre>
+<pre><code>## [1] &quot;apple&quot;     &quot;banana&quot;    &quot;kiwi&quot;      &quot;pineapple&quot; &quot;grape&quot;</code></pre>
+<pre class="r"><code>str_to_upper(fruits)</code></pre>
+<pre><code>## [1] &quot;APPLE&quot;     &quot;BANANA&quot;    &quot;KIWI&quot;      &quot;PINEAPPLE&quot; &quot;GRAPE&quot;</code></pre>
+<p>Now lets create a new vector that has day labels and we will:</p>
+<ol style="list-style-type: decimal">
+<li>Replace the first part of each string with the word “sample”</li>
+<li>Split each string into two separate strings</li>
+<li>Pull out the number from each string</li>
+</ol>
+<pre class="r"><code>library(purrr)
+myString &lt;- c(&quot;Day_01&quot;, &quot;Day_02&quot;, &quot;Day_03&quot;, &quot;Day_04&quot;)
+
+myString %&gt;% 
+  str_replace(pattern = &quot;Day&quot;, replacement = &quot;sample&quot;) %&gt;% 
+  str_split(pattern = &quot;_&quot;) %&gt;% 
+  map(2)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;01&quot;
+## 
+## [[2]]
+## [1] &quot;02&quot;
+## 
+## [[3]]
+## [1] &quot;03&quot;
+## 
+## [[4]]
+## [1] &quot;04&quot;</code></pre>
+<p>Notice that because <code>stringr</code> is part of the tidyverse, I was able to follow the syntax and pipe each function one after the other.</p>
+</div>
+</div>
+<div id="advanced-string-manipulation" class="section level2">
+<h2>Advanced string manipulation</h2>
+<p>Now we are going to work with strings that are in a column in a dataframe and we will learn how to subset a dataframe by the strings we want, how to change strings, and how to find where certain strings are.</p>
+<p>We will use the <code>murders</code> data set in R, it is the murder rates of each state in the US.</p>
+<pre class="r"><code>library(dslabs)
+data(&quot;murders&quot;)
+head(murders)</code></pre>
+<pre><code>##        state abb region population total
+## 1    Alabama  AL  South    4779736   135
+## 2     Alaska  AK   West     710231    19
+## 3    Arizona  AZ   West    6392017   232
+## 4   Arkansas  AR  South    2915918    93
+## 5 California  CA   West   37253956  1257
+## 6   Colorado  CO   West    5029196    65</code></pre>
+<p>We see that this dataframe has 2 columns that are character strings and the region column is a factor but can easily be changed into a character type. Often you will want to pull out only the rows of a dataframe that meet a certain criteria. To do that based on strings, we will need to use <code>filter()</code> and <code>str_detect()</code>. We pull out all of the rows with states that:</p>
+<pre class="r"><code>## States that start with A
+murders %&gt;% 
+  filter(str_detect(string = state, pattern = &quot;A&quot;))</code></pre>
+<pre><code>##      state abb region population total
+## 1  Alabama  AL  South    4779736   135
+## 2   Alaska  AK   West     710231    19
+## 3  Arizona  AZ   West    6392017   232
+## 4 Arkansas  AR  South    2915918    93</code></pre>
+<pre class="r"><code>## States that start with A or B
+murders %&gt;% 
+  filter(str_detect(string = state, pattern = &quot;A|B&quot;))</code></pre>
+<pre><code>##      state abb region population total
+## 1  Alabama  AL  South    4779736   135
+## 2   Alaska  AK   West     710231    19
+## 3  Arizona  AZ   West    6392017   232
+## 4 Arkansas  AR  South    2915918    93</code></pre>
+<pre class="r"><code>## States that are in states.of.interest
+states.of.interest &lt;- c(&quot;Texas&quot;, 
+                        &quot;Louisiana&quot;, 
+                        &quot;Mississippi&quot;, 
+                        &quot;Alabama&quot;, 
+                        &quot;Florida&quot;)
+states.of.interest &lt;- paste(states.of.interest, collapse=&quot;|&quot;) 
+## need to collapse the multiple strings into with the | symbol between them
+states.of.interest</code></pre>
+<pre><code>## [1] &quot;Texas|Louisiana|Mississippi|Alabama|Florida&quot;</code></pre>
+<pre class="r"><code>murders %&gt;% 
+  filter(str_detect(string = state, pattern = states.of.interest))</code></pre>
+<pre><code>##         state abb region population total
+## 1     Alabama  AL  South    4779736   135
+## 2     Florida  FL  South   19687653   669
+## 3   Louisiana  LA  South    4533372   351
+## 4 Mississippi  MS  South    2967297   120
+## 5       Texas  TX  South   25145561   805</code></pre>
+<pre class="r"><code>## States that don&#39;t start with A or B
+murders %&gt;% 
+  filter(str_detect(string = state, pattern = &quot;A|B&quot;, negate = TRUE))</code></pre>
+<pre><code>##                   state abb        region population total
+## 1            California  CA          West   37253956  1257
+## 2              Colorado  CO          West    5029196    65
+## 3           Connecticut  CT     Northeast    3574097    97
+## 4              Delaware  DE         South     897934    38
+## 5  District of Columbia  DC         South     601723    99
+## 6               Florida  FL         South   19687653   669
+## 7               Georgia  GA         South    9920000   376
+## 8                Hawaii  HI          West    1360301     7
+## 9                 Idaho  ID          West    1567582    12
+## 10             Illinois  IL North Central   12830632   364
+## 11              Indiana  IN North Central    6483802   142
+## 12                 Iowa  IA North Central    3046355    21
+## 13               Kansas  KS North Central    2853118    63
+## 14             Kentucky  KY         South    4339367   116
+## 15            Louisiana  LA         South    4533372   351
+## 16                Maine  ME     Northeast    1328361    11
+## 17             Maryland  MD         South    5773552   293
+## 18        Massachusetts  MA     Northeast    6547629   118
+## 19             Michigan  MI North Central    9883640   413
+## 20            Minnesota  MN North Central    5303925    53
+## 21          Mississippi  MS         South    2967297   120
+## 22             Missouri  MO North Central    5988927   321
+## 23              Montana  MT          West     989415    12
+## 24             Nebraska  NE North Central    1826341    32
+## 25               Nevada  NV          West    2700551    84
+## 26        New Hampshire  NH     Northeast    1316470     5
+## 27           New Jersey  NJ     Northeast    8791894   246
+## 28           New Mexico  NM          West    2059179    67
+## 29             New York  NY     Northeast   19378102   517
+## 30       North Carolina  NC         South    9535483   286
+## 31         North Dakota  ND North Central     672591     4
+## 32                 Ohio  OH North Central   11536504   310
+## 33             Oklahoma  OK         South    3751351   111
+## 34               Oregon  OR          West    3831074    36
+## 35         Pennsylvania  PA     Northeast   12702379   457
+## 36         Rhode Island  RI     Northeast    1052567    16
+## 37       South Carolina  SC         South    4625364   207
+## 38         South Dakota  SD North Central     814180     8
+## 39            Tennessee  TN         South    6346105   219
+## 40                Texas  TX         South   25145561   805
+## 41                 Utah  UT          West    2763885    22
+## 42              Vermont  VT     Northeast     625741     2
+## 43             Virginia  VA         South    8001024   250
+## 44           Washington  WA          West    6724540    93
+## 45        West Virginia  WV         South    1852994    27
+## 46            Wisconsin  WI North Central    5686986    97
+## 47              Wyoming  WY          West     563626     5</code></pre>
+<p>In the above examples, the <code>negate = TRUE</code> argument is key for pulling out the states that don’t start with A or B. Sometimes it is easier to tell R which rows you don’t want rather than tell it which ones you do want, as in this case, and this is where the negate argument is useful.</p>
+<p>Another way you may need to manipulate a column of character strings is if you want to change the words. So for example, in the murders dataframe, we will change the names of the regions so they are all one word and all lowercase. To do this we will combine the <code>mutate()</code> and <code>str_replace()</code> functions.</p>
+<pre class="r"><code>murders %&gt;% 
+  distinct(region)</code></pre>
+<pre><code>##          region
+## 1         South
+## 2          West
+## 3     Northeast
+## 4 North Central</code></pre>
+<pre class="r"><code># to just change one region
+murders %&gt;% 
+  mutate(region = str_replace(string = region, 
+                              pattern = &quot;South&quot;, 
+                              replacement = &quot;south&quot;)) %&gt;% 
+  head()</code></pre>
+<pre><code>##        state abb region population total
+## 1    Alabama  AL  south    4779736   135
+## 2     Alaska  AK   West     710231    19
+## 3    Arizona  AZ   West    6392017   232
+## 4   Arkansas  AR  south    2915918    93
+## 5 California  CA   West   37253956  1257
+## 6   Colorado  CO   West    5029196    65</code></pre>
+<pre class="r"><code># to change them all at the same time
+murders %&gt;% 
+  mutate(region = str_replace_all(string = region, c(&quot;South&quot; = &quot;south&quot;,
+                                                     &quot;West&quot; = &quot;west&quot;,
+                                                     &quot;North Central&quot; = &quot;north_central&quot;,
+                                                     &quot;Northeast&quot; = &quot;northeast&quot;))) %&gt;% 
+  head(n = 20)</code></pre>
+<pre><code>##                   state abb        region population total
+## 1               Alabama  AL         south    4779736   135
+## 2                Alaska  AK          west     710231    19
+## 3               Arizona  AZ          west    6392017   232
+## 4              Arkansas  AR         south    2915918    93
+## 5            California  CA          west   37253956  1257
+## 6              Colorado  CO          west    5029196    65
+## 7           Connecticut  CT     northeast    3574097    97
+## 8              Delaware  DE         south     897934    38
+## 9  District of Columbia  DC         south     601723    99
+## 10              Florida  FL         south   19687653   669
+## 11              Georgia  GA         south    9920000   376
+## 12               Hawaii  HI          west    1360301     7
+## 13                Idaho  ID          west    1567582    12
+## 14             Illinois  IL north_central   12830632   364
+## 15              Indiana  IN north_central    6483802   142
+## 16                 Iowa  IA north_central    3046355    21
+## 17               Kansas  KS north_central    2853118    63
+## 18             Kentucky  KY         south    4339367   116
+## 19            Louisiana  LA         south    4533372   351
+## 20                Maine  ME     northeast    1328361    11</code></pre>
+<p>Lastly, if you want to find the rows which contain certain strings you can use the str_which function. For example, if I want to find the index for the rows that contain south in the name.</p>
+<pre class="r"><code>murders %&gt;% 
+  ## creating a new column with the state name and region together just for the example
+  mutate(state_region = paste(state, region, sep = &quot;_&quot;)) %&gt;% 
+  pull(state_region) %&gt;% 
+  str_which(pattern = &quot;_South&quot;)</code></pre>
+<pre><code>##  [1]  1  4  8  9 10 11 18 19 21 25 34 37 41 43 44 47 49</code></pre>
+</div>

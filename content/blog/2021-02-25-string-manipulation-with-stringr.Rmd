@@ -1,0 +1,154 @@
+---
+title: String Manipulation with Stringr
+author: Meg
+date: '2021-02-25'
+slug: []
+image: images/blog/helloworld.png
+categories:
+  - r
+tags:
+  - R
+---
+
+## What is a string?  
+
+In coding, strings, also known as character strings, are sequences of characters that are surrounded by quotation marks. This often includes letters and can include numbers. Character strings are often used for names and categorizing data and it can be extremely useful to learn how to work with this type easily. 
+
+_Note: if you prefer a video tutorial, you can see it here: _
+
+### Basic string manipulation 
+`"hello world"` is an example of a basic character string. It contains two words that are surrounded by quotation marks. Typically when we are working with strings we have more than one, they will be in a vector or in a column(s) in a dataframe. The main package we will be using to manipulate strings will be `stringr`. There are of course many ways to do these functions but stringr is the tidyverse method for string manipulation so the grammar and structure are consistent with other tidyverse packages. 
+
+First we will create a vector of strings called fruits that contains the names of 5 fruits.  
+```{r messages = FALSE, warning=FALSE, error=FALSE}
+library(dplyr)
+library(stringr)
+fruits <- c("Apple", "Banana", "Kiwi", "Pineapple", "Grape")
+```
+
+If we want to get some summary stats of our vector we can use the functions `str_count()` or `str_length()`. The functions tell us how many characters are in each string. 
+```{r}
+str_count(fruits)
+str_length(fruits)
+```
+
+Now, say we want to answer a few questions:  
+
+```{r}
+## Which strings end with the letter e?
+str_ends(fruits, "e")
+
+## Which strings start with the letter a?
+str_starts(fruits, "A")
+
+## Do any strings have "pple" in them? 
+str_detect(fruits, "pple")
+```
+
+You can also quickly convert all letters to the same case by using `str_to_lower()` or `str_to_upper()` which can be handy for making everything uniform so it is easier to match up or group by later.  
+
+```{r}
+str_to_lower(fruits)
+str_to_upper(fruits)
+```
+
+Now lets create a new vector that has day labels and we will:  
+
+  1.  Replace the first part of each string with the word "sample"
+  2.  Split each string into two separate strings
+  3.  Pull out the number from each string  
+  
+```{r}
+
+library(purrr)
+myString <- c("Day_01", "Day_02", "Day_03", "Day_04")
+
+myString %>% 
+  str_replace(pattern = "Day", replacement = "sample") %>% 
+  str_split(pattern = "_") %>% 
+  map(2)
+```
+
+Notice that because `stringr` is part of the tidyverse, I was able to follow the syntax and pipe each function one after the other. 
+
+## Advanced string manipulation  
+
+Now we are going to work with strings that are in a column in a dataframe and we will learn how to subset a dataframe by the strings we want, how to change strings, and how to find where certain strings are.  
+
+We will use the `murders` data set in R, it is the murder rates of each state in the US. 
+
+```{r}
+library(dslabs)
+data("murders")
+head(murders)
+```
+
+We see that this dataframe has 2 columns that are character strings and the region column is a factor but can easily be changed into a character type. Often you will want to pull out only the rows of a dataframe that meet a certain criteria. To do that based on strings, we will need to use `filter()` and `str_detect()`. We pull out all of the rows with states that:  
+
+
+```{r}
+
+## States that start with A
+murders %>% 
+  filter(str_detect(string = state, pattern = "A"))
+
+## States that start with A or B
+murders %>% 
+  filter(str_detect(string = state, pattern = "A|B"))
+
+## States that are in states.of.interest
+states.of.interest <- c("Texas", 
+                        "Louisiana", 
+                        "Mississippi", 
+                        "Alabama", 
+                        "Florida")
+states.of.interest <- paste(states.of.interest, collapse="|") 
+## need to collapse the multiple strings into with the | symbol between them
+states.of.interest
+
+murders %>% 
+  filter(str_detect(string = state, pattern = states.of.interest))
+
+## States that don't start with A or B
+murders %>% 
+  filter(str_detect(string = state, pattern = "A|B", negate = TRUE))
+
+```
+
+In the above examples, the `negate = TRUE` argument is key for pulling out the states that don't start with A or B. Sometimes it is easier to tell R which rows you don't want rather than tell it which ones you do want, as in this case, and this is where the negate argument is useful. 
+
+Another way you may need to manipulate a column of character strings is if you want to change the words. So for example, in the murders dataframe, we will change the names of the regions so they are all one word and all lowercase. To do this we will combine the `mutate()` and `str_replace()` functions. 
+
+```{r}
+murders %>% 
+  distinct(region)
+
+# to just change one region
+murders %>% 
+  mutate(region = str_replace(string = region, 
+                              pattern = "South", 
+                              replacement = "south")) %>% 
+  head()
+
+# to change them all at the same time
+murders %>% 
+  mutate(region = str_replace_all(string = region, c("South" = "south",
+                                                     "West" = "west",
+                                                     "North Central" = "north_central",
+                                                     "Northeast" = "northeast"))) %>% 
+  head(n = 20)
+
+
+```
+
+Lastly, if you want to find the rows which contain certain strings you can use the str_which function. For example, if I want to find the index for the rows that contain south in the name. 
+
+```{r}
+murders %>% 
+  ## creating a new column with the state name and region together just for the example
+  mutate(state_region = paste(state, region, sep = "_")) %>% 
+  pull(state_region) %>% 
+  str_which(pattern = "_South")
+
+```
+
