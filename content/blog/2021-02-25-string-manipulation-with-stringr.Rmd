@@ -14,7 +14,7 @@ tags:
 
 In coding, strings, also known as character strings, are sequences of characters that are surrounded by quotation marks. This often includes letters and can include numbers. Character strings are often used for names and categorizing data and it can be extremely useful to learn how to work with this type easily. 
 
-_Note: if you prefer a video tutorial, you can see it here: _
+_Note: if you prefer a video tutorial, you can see it [here](https://www.youtube.com/watch?v=gbbEls9pHjo) _
 
 ### Basic string manipulation 
 `"hello world"` is an example of a basic character string. It contains two words that are surrounded by quotation marks. Typically when we are working with strings we have more than one, they will be in a vector or in a column(s) in a dataframe. The main package we will be using to manipulate strings will be `stringr`. There are of course many ways to do these functions but stringr is the tidyverse method for string manipulation so the grammar and structure are consistent with other tidyverse packages. 
@@ -92,9 +92,9 @@ We see that this dataframe has 2 columns that are character strings and the regi
 murders %>% 
   filter(str_detect(string = state, pattern = "A"))
 
-## States that start with A or B
+## States that start with A or C
 murders %>% 
-  filter(str_detect(string = state, pattern = "A|B"))
+  filter(str_detect(string = state, pattern = "A|C"))
 
 ## States that are in states.of.interest
 states.of.interest <- c("Texas", 
@@ -109,13 +109,13 @@ states.of.interest
 murders %>% 
   filter(str_detect(string = state, pattern = states.of.interest))
 
-## States that don't start with A or B
+## States that don't start with A or C
 murders %>% 
-  filter(str_detect(string = state, pattern = "A|B", negate = TRUE))
+  filter(str_detect(string = state, pattern = "A|C", negate = TRUE))
 
 ```
 
-In the above examples, the `negate = TRUE` argument is key for pulling out the states that don't start with A or B. Sometimes it is easier to tell R which rows you don't want rather than tell it which ones you do want, as in this case, and this is where the negate argument is useful. 
+In the above examples, the `negate = TRUE` argument is key for pulling out the states that don't start with A or C. Sometimes it is easier to tell R which rows you don't want rather than tell it which ones you do want, as in this case, and this is where the negate argument is useful. 
 
 Another way you may need to manipulate a column of character strings is if you want to change the words. So for example, in the murders dataframe, we will change the names of the regions so they are all one word and all lowercase. To do this we will combine the `mutate()` and `str_replace()` functions. 
 

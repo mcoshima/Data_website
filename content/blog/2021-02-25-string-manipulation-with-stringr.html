@@ -17,7 +17,7 @@ tags:
 <div id="what-is-a-string" class="section level2">
 <h2>What is a string?</h2>
 <p>In coding, strings, also known as character strings, are sequences of characters that are surrounded by quotation marks. This often includes letters and can include numbers. Character strings are often used for names and categorizing data and it can be extremely useful to learn how to work with this type easily.</p>
-<p><em>Note: if you prefer a video tutorial, you can see it here: </em></p>
+<p><em>Note: if you prefer a video tutorial, you can see it <a href="https://www.youtube.com/watch?v=gbbEls9pHjo">here</a> </em></p>
 <div id="basic-string-manipulation" class="section level3">
 <h3>Basic string manipulation</h3>
 <p><code>"hello world"</code> is an example of a basic character string. It contains two words that are surrounded by quotation marks. Typically when we are working with strings we have more than one, they will be in a vector or in a column(s) in a dataframe. The main package we will be using to manipulate strings will be <code>stringr</code>. There are of course many ways to do these functions but stringr is the tidyverse method for string manipulation so the grammar and structure are consistent with other tidyverse packages.</p>
@@ -103,14 +103,20 @@ murders %&gt;%
 ## 2   Alaska  AK   West     710231    19
 ## 3  Arizona  AZ   West    6392017   232
 ## 4 Arkansas  AR  South    2915918    93</code></pre>
-<pre class="r"><code>## States that start with A or B
+<pre class="r"><code>## States that start with A or C
 murders %&gt;% 
-  filter(str_detect(string = state, pattern = &quot;A|B&quot;))</code></pre>
-<pre><code>##      state abb region population total
-## 1  Alabama  AL  South    4779736   135
-## 2   Alaska  AK   West     710231    19
-## 3  Arizona  AZ   West    6392017   232
-## 4 Arkansas  AR  South    2915918    93</code></pre>
+  filter(str_detect(string = state, pattern = &quot;A|C&quot;))</code></pre>
+<pre><code>##                   state abb    region population total
+## 1               Alabama  AL     South    4779736   135
+## 2                Alaska  AK      West     710231    19
+## 3               Arizona  AZ      West    6392017   232
+## 4              Arkansas  AR     South    2915918    93
+## 5            California  CA      West   37253956  1257
+## 6              Colorado  CO      West    5029196    65
+## 7           Connecticut  CT Northeast    3574097    97
+## 8  District of Columbia  DC     South     601723    99
+## 9        North Carolina  NC     South    9535483   286
+## 10       South Carolina  SC     South    4625364   207</code></pre>
 <pre class="r"><code>## States that are in states.of.interest
 states.of.interest &lt;- c(&quot;Texas&quot;, 
                         &quot;Louisiana&quot;, 
@@ -129,58 +135,52 @@ states.of.interest</code></pre>
 ## 3   Louisiana  LA  South    4533372   351
 ## 4 Mississippi  MS  South    2967297   120
 ## 5       Texas  TX  South   25145561   805</code></pre>
-<pre class="r"><code>## States that don&#39;t start with A or B
+<pre class="r"><code>## States that don&#39;t start with A or C
 murders %&gt;% 
-  filter(str_detect(string = state, pattern = &quot;A|B&quot;, negate = TRUE))</code></pre>
-<pre><code>##                   state abb        region population total
-## 1            California  CA          West   37253956  1257
-## 2              Colorado  CO          West    5029196    65
-## 3           Connecticut  CT     Northeast    3574097    97
-## 4              Delaware  DE         South     897934    38
-## 5  District of Columbia  DC         South     601723    99
-## 6               Florida  FL         South   19687653   669
-## 7               Georgia  GA         South    9920000   376
-## 8                Hawaii  HI          West    1360301     7
-## 9                 Idaho  ID          West    1567582    12
-## 10             Illinois  IL North Central   12830632   364
-## 11              Indiana  IN North Central    6483802   142
-## 12                 Iowa  IA North Central    3046355    21
-## 13               Kansas  KS North Central    2853118    63
-## 14             Kentucky  KY         South    4339367   116
-## 15            Louisiana  LA         South    4533372   351
-## 16                Maine  ME     Northeast    1328361    11
-## 17             Maryland  MD         South    5773552   293
-## 18        Massachusetts  MA     Northeast    6547629   118
-## 19             Michigan  MI North Central    9883640   413
-## 20            Minnesota  MN North Central    5303925    53
-## 21          Mississippi  MS         South    2967297   120
-## 22             Missouri  MO North Central    5988927   321
-## 23              Montana  MT          West     989415    12
-## 24             Nebraska  NE North Central    1826341    32
-## 25               Nevada  NV          West    2700551    84
-## 26        New Hampshire  NH     Northeast    1316470     5
-## 27           New Jersey  NJ     Northeast    8791894   246
-## 28           New Mexico  NM          West    2059179    67
-## 29             New York  NY     Northeast   19378102   517
-## 30       North Carolina  NC         South    9535483   286
-## 31         North Dakota  ND North Central     672591     4
-## 32                 Ohio  OH North Central   11536504   310
-## 33             Oklahoma  OK         South    3751351   111
-## 34               Oregon  OR          West    3831074    36
-## 35         Pennsylvania  PA     Northeast   12702379   457
-## 36         Rhode Island  RI     Northeast    1052567    16
-## 37       South Carolina  SC         South    4625364   207
-## 38         South Dakota  SD North Central     814180     8
-## 39            Tennessee  TN         South    6346105   219
-## 40                Texas  TX         South   25145561   805
-## 41                 Utah  UT          West    2763885    22
-## 42              Vermont  VT     Northeast     625741     2
-## 43             Virginia  VA         South    8001024   250
-## 44           Washington  WA          West    6724540    93
-## 45        West Virginia  WV         South    1852994    27
-## 46            Wisconsin  WI North Central    5686986    97
-## 47              Wyoming  WY          West     563626     5</code></pre>
-<p>In the above examples, the <code>negate = TRUE</code> argument is key for pulling out the states that don’t start with A or B. Sometimes it is easier to tell R which rows you don’t want rather than tell it which ones you do want, as in this case, and this is where the negate argument is useful.</p>
+  filter(str_detect(string = state, pattern = &quot;A|C&quot;, negate = TRUE))</code></pre>
+<pre><code>##            state abb        region population total
+## 1       Delaware  DE         South     897934    38
+## 2        Florida  FL         South   19687653   669
+## 3        Georgia  GA         South    9920000   376
+## 4         Hawaii  HI          West    1360301     7
+## 5          Idaho  ID          West    1567582    12
+## 6       Illinois  IL North Central   12830632   364
+## 7        Indiana  IN North Central    6483802   142
+## 8           Iowa  IA North Central    3046355    21
+## 9         Kansas  KS North Central    2853118    63
+## 10      Kentucky  KY         South    4339367   116
+## 11     Louisiana  LA         South    4533372   351
+## 12         Maine  ME     Northeast    1328361    11
+## 13      Maryland  MD         South    5773552   293
+## 14 Massachusetts  MA     Northeast    6547629   118
+## 15      Michigan  MI North Central    9883640   413
+## 16     Minnesota  MN North Central    5303925    53
+## 17   Mississippi  MS         South    2967297   120
+## 18      Missouri  MO North Central    5988927   321
+## 19       Montana  MT          West     989415    12
+## 20      Nebraska  NE North Central    1826341    32
+## 21        Nevada  NV          West    2700551    84
+## 22 New Hampshire  NH     Northeast    1316470     5
+## 23    New Jersey  NJ     Northeast    8791894   246
+## 24    New Mexico  NM          West    2059179    67
+## 25      New York  NY     Northeast   19378102   517
+## 26  North Dakota  ND North Central     672591     4
+## 27          Ohio  OH North Central   11536504   310
+## 28      Oklahoma  OK         South    3751351   111
+## 29        Oregon  OR          West    3831074    36
+## 30  Pennsylvania  PA     Northeast   12702379   457
+## 31  Rhode Island  RI     Northeast    1052567    16
+## 32  South Dakota  SD North Central     814180     8
+## 33     Tennessee  TN         South    6346105   219
+## 34         Texas  TX         South   25145561   805
+## 35          Utah  UT          West    2763885    22
+## 36       Vermont  VT     Northeast     625741     2
+## 37      Virginia  VA         South    8001024   250
+## 38    Washington  WA          West    6724540    93
+## 39 West Virginia  WV         South    1852994    27
+## 40     Wisconsin  WI North Central    5686986    97
+## 41       Wyoming  WY          West     563626     5</code></pre>
+<p>In the above examples, the <code>negate = TRUE</code> argument is key for pulling out the states that don’t start with A or C. Sometimes it is easier to tell R which rows you don’t want rather than tell it which ones you do want, as in this case, and this is where the negate argument is useful.</p>
 <p>Another way you may need to manipulate a column of character strings is if you want to change the words. So for example, in the murders dataframe, we will change the names of the regions so they are all one word and all lowercase. To do this we will combine the <code>mutate()</code> and <code>str_replace()</code> functions.</p>
 <pre class="r"><code>murders %&gt;% 
   distinct(region)</code></pre>
